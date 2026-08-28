@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Checkout · Love &amp; Love YAH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Anton&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Yeseva+One&amp;family=Epilogue:wght@400;500;600;700;800&amp;family=Caveat:wght@500;700&amp;family=Fredoka:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+<style>
+  .ckf{display:block}
+  .ck-field{display:flex;flex-direction:column;gap:6px}
+  .ck-field label{font-size:12px;font-weight:700;color:#5a4f49}
+  .ck-field input,.ck-field textarea{padding:12px 14px;border:1px solid rgba(0,0,0,.14);border-radius:9px;font:inherit;font-size:14px;box-sizing:border-box;width:100%}
+  @media(max-width:900px){.ck-grid{grid-template-columns:1fr!important}.ck-side{position:static!important}}
+</style>
+</head><body>
+<site-nav base=""></site-nav>
+<div class="ckf"><div style="background:#fff;color:#1A1917;font-family:'Hanken Grotesk',sans-serif;min-height:100vh">
+  <div style="max-width:1180px;margin:0 auto;padding:56px 24px 90px">
+    <div style="font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#185ABD">Checkout</div>
+    <h1 style="font-weight:800;font-size:42px;letter-spacing:-1.6px;line-height:1.02;margin:14px 0 30px">Complete your order</h1>
+
+    <div id="ck-empty" style="display:none;padding:60px 0;text-align:center;border:1px dashed rgba(0,0,0,.16);border-radius:16px">
+      <p style="font-size:17px;color:#5a4f49;margin:0 0 18px">Your cart is empty.</p>
+      <a class="plain" href="woodworking.html" style="display:inline-flex;background:#41A5EE;color:#fff;font-weight:700;font-size:15px;padding:13px 26px;border-radius:11px">Start shopping</a>
+    </div>
+
+    <div id="ck-filled" class="ck-grid" style="display:grid;grid-template-columns:1fr 360px;gap:44px;align-items:start">
+      <div>
+        <div style="font-weight:800;font-size:19px;letter-spacing:-.3px;margin-bottom:16px">Contact</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:30px">
+          <div class="ck-field"><label>Email</label><input id="ck-email" type="email" placeholder="you@example.com"></div>
+          <div class="ck-field"><label>Phone (optional)</label><input id="ck-phone" type="tel" placeholder="(555) 555-5555"></div>
+        </div>
+
+        <div style="font-weight:800;font-size:19px;letter-spacing:-.3px;margin-bottom:16px">Shipping address</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+          <div class="ck-field"><label>First name</label><input id="ck-fname"></div>
+          <div class="ck-field"><label>Last name</label><input id="ck-lname"></div>
+        </div>
+        <div class="ck-field" style="margin-bottom:14px"><label>Address</label><input id="ck-addr1" placeholder="Street address"></div>
+        <div class="ck-field" style="margin-bottom:14px"><label>Apt, suite, etc. (optional)</label><input id="ck-addr2"></div>
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin-bottom:30px">
+          <div class="ck-field"><label>City</label><input id="ck-city"></div>
+          <div class="ck-field"><label>State</label><input id="ck-state"></div>
+          <div class="ck-field"><label>ZIP</label><input id="ck-zip"></div>
+        </div>
+
+        <div style="font-weight:800;font-size:19px;letter-spacing:-.3px;margin-bottom:16px">Order notes (optional)</div>
+        <div class="ck-field" style="margin-bottom:30px"><textarea id="ck-notes" rows="3" placeholder="Notes about your order, e.g. special instructions for delivery"></textarea></div>
+
+        <div style="font-weight:800;font-size:19px;letter-spacing:-.3px;margin-bottom:16px">Payment method</div>
+        <div id="ck-pay-options" style="display:flex;flex-direction:column;gap:10px;margin-bottom:8px">
+          <label style="display:flex;align-items:center;gap:10px;border:1px solid rgba(0,0,0,.14);border-radius:10px;padding:14px 16px;cursor:pointer">
+            <input type="radio" name="ck-pay" value="stripe" checked>
+            <span style="font-weight:700;flex:1">Stripe</span><span style="font-size:12px;color:#8a7a6a">Card, Apple Pay, Google Pay</span>
+          </label>
+          <label style="display:flex;align-items:center;gap:10px;border:1px solid rgba(0,0,0,.14);border-radius:10px;padding:14px 16px;cursor:pointer">
+            <input type="radio" name="ck-pay" value="paypal">
+            <span style="font-weight:700;flex:1">PayPal</span><span style="font-size:12px;color:#8a7a6a">Pay with your PayPal account</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="ck-side" style="position:sticky;top:100px;border:1px solid rgba(0,0,0,.1);border-radius:16px;padding:26px;box-shadow:0 16px 44px rgba(0,0,0,.06)">
+        <div style="font-weight:800;font-size:19px;letter-spacing:-.3px;margin-bottom:18px">Order summary</div>
+        <div id="ck-items" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px"></div>
+        <div style="border-top:1px solid rgba(43,35,32,.14);padding-top:16px">
+          <div style="display:flex;justify-content:space-between;font-size:15px;color:#5a4f49;margin-bottom:10px"><span>Subtotal</span><span id="ck-subtotal">$0.00</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:15px;color:#5a4f49;margin-bottom:10px"><span>Shipping</span><span id="ck-shipping">$0.00</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:15px;color:#5a4f49;margin-bottom:16px"><span>Estimated tax</span><span id="ck-tax">$0.00</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:19px;font-weight:800;margin-bottom:20px"><span>Total</span><span id="ck-total">$0.00</span></div>
+        </div>
+        <button id="ck-place-order" onclick="ckPlaceOrder()" style="width:100%;background:#41A5EE;color:#fff;border:none;font:inherit;font-weight:700;font-size:16px;padding:15px 0;border-radius:12px;cursor:pointer">Place order</button>
+        <div style="text-align:center;font-size:12px;color:#8a7a6a;margin-top:12px">🔒 Payments are processed securely by Stripe and PayPal</div>
+        <div style="text-align:center;font-size:12px;color:#8a7a6a;margin-top:2px">10% of every order is donated automatically</div>
+      </div>
+    </div>
+  </div>
+</div></div>
+<site-footer base=""></site-footer>
+<script src="site-chrome.js"></script>
+<script src="site.js"></script>
+<script src="cart.js"></script>
+<script>
+// ── PAYMENT CONFIG — fill in when accounts are ready ──────────────
+// Stripe: arbitrary cart totals need a Checkout Session created server-side
+// (Payment Links are fixed-price). Paste that session-creation endpoint here
+// once you have a backend, or a Stripe-hosted Checkout URL.
+var STRIPE_CHECKOUT_URL = "";
+// PayPal: paste your PayPal.me link (e.g. "https://paypal.me/YourOrg"). The
+// order total is appended automatically. Leave blank to disable.
+var PAYPAL_LINK = "";
+// ─────────────────────────────────────────────────────────────────────────
+
+function money(n) { return "$" + n.toFixed(2); }
+
+function ckRender() {
+  const cart = LLYCart.getCart();
+  document.getElementById("ck-empty").style.display = cart.length ? "none" : "block";
+  document.getElementById("ck-filled").style.display = cart.length ? "grid" : "none";
+  document.getElementById("ck-items").innerHTML = cart.map((it) => (
+    '<div style="display:flex;gap:12px;align-items:center">' +
+      '<div style="width:52px;height:52px;border-radius:8px;background:' + it.color + ';flex:none"></div>' +
+      '<div style="flex:1"><div style="font-size:14px;font-weight:700">' + it.name + '</div><div style="font-size:12px;color:#8a7a6a">Qty ' + it.qty + '</div></div>' +
+      '<div style="font-size:14px;font-weight:700">' + money(it.price * it.qty) + '</div>' +
+    '</div>'
+  )).join("");
+  const subtotal = LLYCart.cartSubtotal();
+  const shipping = subtotal > 0 ? (subtotal >= 75 ? 0 : 6.95) : 0;
+  const tax = subtotal * 0.07;
+  const total = subtotal + shipping + tax;
+  document.getElementById("ck-subtotal").textContent = money(subtotal);
+  document.getElementById("ck-shipping").textContent = shipping === 0 ? "Free" : money(shipping);
+  document.getElementById("ck-tax").textContent = money(tax);
+  document.getElementById("ck-total").textContent = money(total);
+}
+
+function ckPlaceOrder() {
+  const cart = LLYCart.getCart();
+  if (!cart.length) return;
+  const method = document.querySelector('input[name="ck-pay"]:checked').value;
+  const subtotal = LLYCart.cartSubtotal();
+  const shipping = subtotal >= 75 ? 0 : 6.95;
+  const total = (subtotal + shipping + subtotal * 0.07).toFixed(2);
+  if (method === "paypal" && PAYPAL_LINK) {
+    window.location.href = PAYPAL_LINK + (PAYPAL_LINK.indexOf("paypal.me") > -1 ? "/" + total : "");
+  } else if (method === "stripe" && STRIPE_CHECKOUT_URL) {
+    window.location.href = STRIPE_CHECKOUT_URL;
+  } else {
+    alert("Payment isn't connected yet — add your Stripe/PayPal details in checkout.html to accept real payments. (Order total would be " + money(parseFloat(total)) + ".)");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", ckRender);
+document.addEventListener("cart:change", ckRender);
+</script>
+</body></html>

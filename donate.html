@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Donate · Love &amp; Love YAH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&amp;family=Hanken+Grotesk:wght@400;500;600;700;800&amp;family=Anton&amp;family=Space+Grotesk:wght@400;500;600;700&amp;family=Yeseva+One&amp;family=Epilogue:wght@400;500;600;700;800&amp;family=Caveat:wght@500;700&amp;family=Fredoka:wght@500;600;700&amp;family=DM+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head><body>
+<site-nav base=""></site-nav>
+<div class="dnf"><div style="background:#fff;color:#1A1917;font-family:'Hanken Grotesk',sans-serif;min-height:100vh">
+<div style="max-width:620px;margin:0 auto;padding:70px 24px 64px;text-align:center">
+  <div style="font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#185ABD">Fuel the give-back</div>
+  <h1 style="font-weight:800;font-size:52px;letter-spacing:-2px;line-height:1;margin:16px 0 12px">Give beyond the shirt.</h1>
+  <p style="font-size:17px;line-height:1.6;color:#5a4f49;margin:0 auto 34px;max-width:480px">100% of every donation goes straight to our partners — clean water, youth ministry, meals, mental-health support, and the arts.</p>
+  <div style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:30px;text-align:left;box-shadow:0 20px 50px rgba(0,0,0,.14)">
+    <div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:6px">Frequency</div>
+    <div style="display:flex;gap:10px;margin-bottom:22px" id="dn-freq-row"><button class="dn-freq" data-freq="onetime" onclick="dnSetFreq('onetime')" style="flex:1;padding:11px 0;border:1px solid #185ABD;border-radius:10px;font:inherit;font-weight:700;font-size:14px;background:#41A5EE;color:#fff;cursor:pointer">One-time</button><button class="dn-freq" data-freq="monthly" onclick="dnSetFreq('monthly')" style="flex:1;padding:11px 0;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-weight:700;font-size:14px;background:#fff;color:#1A1917;cursor:pointer">Monthly</button></div>
+    <div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:6px">Choose an amount</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:12px" id="dn-amt-row">
+      <button class="dn-amt" data-amt="10" onclick="dnSetAmt(10,this)" style="padding:14px 0;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-weight:700;font-size:15px;background:#fff;color:#1A1917;cursor:pointer">$10</button>
+      <button class="dn-amt" data-amt="25" onclick="dnSetAmt(25,this)" style="padding:14px 0;border:1px solid #185ABD;border-radius:10px;font:inherit;font-weight:700;font-size:15px;background:#41A5EE;color:#fff;cursor:pointer">$25</button>
+      <button class="dn-amt" data-amt="50" onclick="dnSetAmt(50,this)" style="padding:14px 0;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-weight:700;font-size:15px;background:#fff;color:#1A1917;cursor:pointer">$50</button>
+      <button class="dn-amt" data-amt="100" onclick="dnSetAmt(100,this)" style="padding:14px 0;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-weight:700;font-size:15px;background:#fff;color:#1A1917;cursor:pointer">$100</button>
+    </div>
+    <input id="dn-custom" placeholder="Other amount" oninput="dnSetCustom(this.value)" style="width:100%;box-sizing:border-box;padding:13px 15px;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-size:14px;background:#fff;color:#1A1917;margin-bottom:20px">
+    <div style="display:flex;flex-direction:column;gap:10px">
+      <button onclick="dnGo('stripe')" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#635BFF;color:#fff;border:none;font:inherit;font-weight:700;font-size:16px;padding:15px 0;border-radius:12px;cursor:pointer">Donate with Stripe</button>
+      <button onclick="dnGo('paypal')" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#FFC439;color:#1A1917;border:none;font:inherit;font-weight:700;font-size:16px;padding:15px 0;border-radius:12px;cursor:pointer">Donate with PayPal</button>
+    </div>
+    <div style="text-align:center;font-size:12px;color:#8a7a6a;margin-top:14px">🔒 Payments are processed securely by Stripe and PayPal</div>
+    <div style="text-align:center;font-size:12px;color:#8a7a6a;margin-top:2px">Donations are tax-deductible · you'll get a receipt by email</div>
+  </div>
+  <p style="font-size:13px;color:#8a7a6a;margin:26px auto 0;max-width:460px">Prefer to give through a product? Every collection donates automatically — see the <b>Give Back</b> page.</p>
+</div></div></div>
+<site-footer base=""></site-footer>
+<script src="site-chrome.js"></script>
+<script src="site.js"></script>
+<script>
+// ── PAYMENT CONFIG — fill these in when accounts are ready ──────────────
+// Stripe: create a Payment Link per amount+frequency in the Stripe Dashboard
+// (Payment Links → New), then paste the URLs below. Leave blank to disable.
+var STRIPE_LINKS = {
+  onetime: { 10: "", 25: "", 50: "", 100: "", custom: "" },
+  monthly: { 10: "", 25: "", 50: "", 100: "", custom: "" }
+};
+// PayPal: paste your PayPal.me link (e.g. "https://paypal.me/YourOrg") or
+// business email. Monthly gifts need a PayPal subscription button instead —
+// ask us to wire that up once you have one.
+var PAYPAL_LINK = "";
+// ─────────────────────────────────────────────────────────────────────────
+
+var dnState = { freq: "onetime", amt: 25, custom: null };
+
+function dnSetFreq(freq) {
+  dnState.freq = freq;
+  document.querySelectorAll(".dn-freq").forEach(function (b) {
+    var on = b.dataset.freq === freq;
+    b.style.background = on ? "#41A5EE" : "#fff";
+    b.style.color = on ? "#fff" : "#1A1917";
+    b.style.borderColor = on ? "#185ABD" : "rgba(0,0,0,.14)";
+  });
+}
+function dnSetAmt(amt, el) {
+  dnState.amt = amt;
+  dnState.custom = null;
+  document.getElementById("dn-custom").value = "";
+  document.querySelectorAll(".dn-amt").forEach(function (b) {
+    var on = b === el;
+    b.style.background = on ? "#41A5EE" : "#fff";
+    b.style.color = on ? "#fff" : "#1A1917";
+    b.style.borderColor = on ? "#185ABD" : "rgba(0,0,0,.14)";
+  });
+}
+function dnSetCustom(val) {
+  var n = parseFloat(val);
+  dnState.custom = n > 0 ? n : null;
+  if (dnState.custom) {
+    document.querySelectorAll(".dn-amt").forEach(function (b) {
+      b.style.background = "#fff"; b.style.color = "#1A1917"; b.style.borderColor = "rgba(0,0,0,.14)";
+    });
+  }
+}
+function dnGo(gateway) {
+  var amt = dnState.custom || dnState.amt;
+  if (gateway === "stripe") {
+    var key = dnState.custom ? "custom" : dnState.amt;
+    var url = STRIPE_LINKS[dnState.freq][key];
+    window.location.href = url || "#";
+  } else {
+    var url = PAYPAL_LINK ? PAYPAL_LINK + (PAYPAL_LINK.indexOf("paypal.me") > -1 ? "/" + amt : "") : "#";
+    window.location.href = url || "#";
+  }
+}
+</script>
+</body></html>
