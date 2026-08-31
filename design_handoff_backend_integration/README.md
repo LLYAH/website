@@ -68,8 +68,23 @@ Every `.html` file at the project root and in the category subfolders (`t-shirts
 
 ### 6. Bible verse zip downloads (`scripture-resources.html`)
 - **Layout:** Platform picker (8 platforms) + style picker (4 styles) at the top, updating spec text and preview swatches; grid of 9 themed verse-set cards, each with a "Download [platform] · [style]" button.
-- **Current logic:** `site.js`'s `.sr-plat`/`.sr-style` handlers only update button label text and a preview swatch color — **the download buttons (`.sr-dl`) have no click handler at all; nothing downloads.**
-- **Needed:**
+- **Current logic:** `downloads.js` (`window.LLYDownloads`) implements this and works today. Each card carries `data-set`; the page wrapper carries `data-page`, `data-plat`, `data-style`. Clicking `.sr-dl` resolves (page, set, platform, style) to a **Vercel Blob URL by convention**, HEAD-probes it (result cached per URL for the page load), and downloads it with `?download=1` if it exists. If it does not exist the button shows "coming soon". Buttons have preparing/progress/done/failed states.
+- **Vercel Blob contract — this is the only thing left to do.** Set `LLYDownloads.CONFIG.blobBase` in `downloads.js` to the public blob base URL (no trailing slash), then upload zips at exactly:
+
+  ```
+  {blobBase}/{page}/{set}/{set}-{platform-slug}-{style}.zip
+  ```
+
+  - `page` — `scripture` | `inspirational`
+  - `set` — the `data-set` value on the card; the full list is in `CATALOG` in `downloads.js` (scripture: `verse-a-day`, `love`, `strength`, `jesus`, `deliverance`, `marriage`, `holy-spirit`, `forgiveness`, `faith`; inspirational: `encouragement`, `hope`, `strength`, `identity`, `faith-over-fear`, `family`, `gratitude`)
+  - `platform-slug` — `PLATFORMS[key].slug`: `facebook-1200x630`, `facebook-reels-1080x1920`, `instagram-1080x1350`, `instagram-story-1080x1920`, `x-1600x900`, `tiktok-1080x1920`, `youtube-1280x720`, `truth-social-1200x675`
+  - `style` — `bold` | `modern` | `urban` | `elegant`
+
+  Example: `.../downloads/scripture/love/love-facebook-1200x630-bold.zip`. No code change is needed as files land — upload and the button starts working. Blobs must be public and CORS-readable so the HEAD probe succeeds (a failed probe degrades to "coming soon", not an error).
+- **Going live:** set `CONFIG.blobOnly = true` in `downloads.js` at the same time you set `blobBase`. That disables the client-side builder entirely, so the live site serves only zips that really exist on Blob and shows "coming soon" for anything not yet uploaded — it can never hand a visitor a 9-image sample zip in place of the 365-graphic set the card advertises. Leave it `false` only for local/staging demos.
+- **Overrides / fallbacks:** `HOSTED["page/set/platform/style"] = url` pins one combination to an arbitrary URL. With `blobBase` empty, the client builds a zip itself from loose PNGs: each set lists its filenames **once** in `CATALOG[page][set].files`, and `STYLE_DIR` maps the four art styles to the folders those same filenames live in (`uploads/`, `uploads/modern/`, `uploads/urban/`, `uploads/elegant/`). Files missing from a style's folder are skipped; if none are found the combination reports "coming soon". Today only `uploads/` (bold) is populated — dropping the same filenames into the other three folders turns those styles on with no code change.
+- **Optional server involvement** (download counts, gated access): point `blobBase` at `/api/download` and have that function 302 to the blob — the client routes everything through one resolver, so nothing else changes.
+- **Original spec, for reference:**
   - File storage for the zips: Vercel Blob or S3. Given 9 verse-sets × 8 platform sizes × 4 styles is a lot of combinations, confirm with the user how many actual zip files exist/will be produced (likely far fewer than the full matrix — e.g. one zip per verse-set+platform combo, style may just reflect existing image style already baked into that platform's zip).
   - A mapping (verse-set, platform, style) → file URL, and a real `href`/`onclick` on each `.sr-dl` button that either links directly to the stored zip or hits a small `/api/download?set=...&platform=...&style=...` endpoint that redirects to the correct file (a serverless endpoint is nice for tracking download counts, but a direct static link is simpler and sufficient if analytics aren't needed).
   - Same download pattern likely applies to `inspirational-graphics.html` (not fully reviewed here — check it for the same "free download" pattern).
