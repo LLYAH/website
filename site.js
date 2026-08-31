@@ -123,6 +123,7 @@
       const ss = document.querySelector(".sr-stylespec");
       if (ss) ss.textContent = conf[1];
       document.querySelectorAll(".sr-prev").forEach((p) => {
+        if (p.style.backgroundImage.indexOf("url(") === 0) return;
         p.style.background = conf[2];
         p.style.color = conf[3];
         p.textContent = conf[0].toLowerCase() + " style preview";
