@@ -83,16 +83,17 @@
   .cat-grid a:hover,.res-grid a:hover,.tee-grid a:hover{border-color:rgba(24,90,189,.45)}
   .af-grid > div{text-shadow:0 1px 2px rgba(0,0,0,.22)}
   .tm-track p,.tm-track b,.tm-track span,.dv-track p,.dv-track div{text-shadow:0 1px 2px rgba(0,0,0,.22)}
-  button,.home-cta,a.plain[style*="border-radius:1"],a.plain[style*="border-radius: 1"]{text-shadow:0 1px 2px rgba(0,0,0,.22);box-shadow:0 1px 3px rgba(0,0,0,.14)}
+  button,.home-cta,a.plain[style*="border-radius:1"],a.plain[style*="border-radius: 1"]{text-shadow:0 1px 2px rgba(0,0,0,.22);box-shadow:0 2px 5px rgba(0,0,0,.22)}
   .tsnav button,.tsnav .tsbtn,.tsnav .cartpill,.tsmenu button,.tsmenu a,.dbmenu a,.dbmenu button{box-shadow:none!important}
   button,.home-cta,a.plain[style*="border-radius:1"],a.plain[style*="border-radius: 1"]{background-image:linear-gradient(165deg,rgba(88,140,232,.12) 0%,rgba(88,140,232,.035) 55%,rgba(24,90,189,.09) 100%)!important}
   .tsmenu a,.dbmenu a,.dbmenu button,.dbbtn,.tshamburger,.tsmenu button,.tee-grid a.plain[style]{background-image:none!important}
   .tsbtn{background-image:linear-gradient(160deg,#33333A 0%,#1A1B22 55%,#0B0D14 100%)!important;background-color:#14151b!important}
   a.plain[style*="background:#41A5EE"],a.plain[style*="background: #41A5EE"],a.plain[style*="background-color:#41A5EE"],a.plain[style*="background:#41a5ee"],button[style*="background:#41A5EE"],button[style*="background: #41A5EE"],button[style*="background-color:#41A5EE"],button[style*="background:#41a5ee"],a.home-cta,.cat-chip[data-on="1"],.res-chip[data-on="1"],button[data-on="1"]{background-image:linear-gradient(165deg,#41A5EE 0%,#41A5EE 30%,#2B7CD3 68%,#185ABD 100%)!important;background-color:#2B7CD3!important;border-color:#185ABD!important}
   .cartpill{background-image:linear-gradient(165deg,rgba(88,140,232,.20) 0%,rgba(88,140,232,.06) 55%,rgba(24,90,189,.16) 100%)!important}
-  .af-grid > div,.res-grid > a.plain[style*="border-radius:16px"],.dv-slider > div[style*="border-radius:18px"],.tm-track > div > div[style*="border-radius:18px"]{box-shadow:0 6px 18px rgba(26,25,23,.16),0 1px 3px rgba(0,0,0,.14);border:1px solid #fff;background-image:linear-gradient(165deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,.14) 33%,rgba(255,255,255,0) 62%,rgba(0,0,0,.10) 100%)!important}
+  .af-grid > div,.res-grid > a.plain[style*="border-radius:16px"],.dv-slider > div[style*="border-radius:18px"],.tm-track > div > div[style*="border-radius:18px"]{box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);border:1px solid #fff;background-image:linear-gradient(165deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,.14) 33%,rgba(255,255,255,0) 62%,rgba(0,0,0,.10) 100%)!important}
   .tm-track > div > div[style*="border-radius:18px"]{box-shadow:none!important}
-  .tm-arrow,.dv-arrow,.tm-dot,.dv-dot{box-shadow:0 1px 3px rgba(0,0,0,.14)!important}
+  .home-more > div{box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14)}
+  .tm-arrow,.dv-arrow,.tm-dot,.dv-dot{box-shadow:0 2px 5px rgba(0,0,0,.22)!important}
   .tee-grid a.plain[style]{box-shadow:none!important;border:1px solid rgba(43,35,32,.12)!important}
   @media(max-width:1000px){.tm-grid,.rd-grid,.bv-year,.home-more,.cat-grid,.res-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
   @media(max-width:1180px){.tsnavlinks .tslink{display:none}}
