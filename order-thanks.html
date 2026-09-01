@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Order confirmed · Love &amp; Love YAH</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head><body>
+<site-nav base=""></site-nav>
+<div style="background:#fff;color:#1A1917;font-family:'Hanken Grotesk',sans-serif;min-height:100vh">
+<div style="max-width:620px;margin:0 auto;padding:70px 24px 64px;text-align:center">
+  <div style="font-size:14px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#185ABD">Order confirmed</div>
+  <h1 style="font-weight:800;font-size:52px;letter-spacing:-2px;line-height:1;margin:16px 0 12px">Thank you.</h1>
+  <p id="ot-lede" style="font-size:17px;line-height:1.6;color:#5a4f49;margin:0 auto 34px;max-width:480px">Confirming your order…</p>
+  <div style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:30px;text-align:left;box-shadow:0 20px 50px rgba(0,0,0,.14)">
+    <div id="ot-status" style="font-size:15px;line-height:1.6;color:#1A1917">Checking with the payment processor…</div>
+    <div id="ot-ref" style="display:none;font-size:12.5px;color:#8a7a6a;margin-top:12px"></div>
+    <div style="display:flex;gap:10px;margin-top:22px">
+      <a class="plain" href="woodworking" style="flex:1;text-align:center;background:#41A5EE;color:#fff;font-weight:700;font-size:15px;padding:14px 0;border-radius:12px">Keep shopping</a>
+      <a class="plain" href="give-back" style="flex:1;text-align:center;background:#fff;color:#1A1917;border:1px solid rgba(0,0,0,.14);font-weight:700;font-size:15px;padding:14px 0;border-radius:12px">See the give-back</a>
+    </div>
+  </div>
+  <p style="font-size:13px;color:#8a7a6a;margin:26px auto 0;max-width:460px">A confirmation email is on its way. Questions about this order? Email hello@loveandloveyah.com.</p>
+</div></div>
+<site-footer base=""></site-footer>
+<script src="site-chrome.js"></script>
+<script src="cart.js"></script>
+<script>
+var q = new URLSearchParams(location.search);
+var lede = document.getElementById("ot-lede");
+var statusEl = document.getElementById("ot-status");
+var refEl = document.getElementById("ot-ref");
+
+function money(cents) { return "$" + (cents / 100).toFixed(2); }
+function clearCart() {
+  try { LLYCart.clearCart(); localStorage.removeItem("llyCoupon"); sessionStorage.removeItem("llyPendingOrder"); } catch (e) {}
+}
+function done(msg, ref) {
+  lede.textContent = "We're packing it now. 10% of this order goes straight to our give-back partners.";
+  statusEl.textContent = msg;
+  if (ref) { refEl.textContent = "Order reference: " + ref; refEl.style.display = "block"; }
+  clearCart();
+}
+function problem(msg) {
+  lede.textContent = "We hit a snag confirming this one.";
+  statusEl.textContent = msg;
+}
+
+(async function () {
+  var gateway = q.get("gateway");
+
+  if (gateway === "stripe") {
+    done("Your payment went through and your order is logged. Stripe has emailed your card receipt.", q.get("session_id"));
+    return;
+  }
+
+  if (gateway === "paypal") {
+    var token = q.get("token");
+    if (!token) { done("Your order is confirmed."); return; }
+    try {
+      var r = await fetch("/api/checkout-paypal?action=capture", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: token })
+      });
+      var d = await r.json().catch(function () { return {}; });
+      if (!r.ok) throw new Error(d.error || "PayPal couldn't confirm this payment.");
+      var total = d.order && d.order.totalCents ? " of " + money(d.order.totalCents) : "";
+      done("Your payment" + total + " is confirmed and your order is logged.", (d.order && d.order.ref) || token);
+    } catch (e) {
+      problem(e.message + " If PayPal showed you a completed payment, it went through — email hello@loveandloveyah.com and we'll confirm the order.");
+    }
+    return;
+  }
+
+  done("Your order is confirmed.");
+})();
+</script>
+</body></html>

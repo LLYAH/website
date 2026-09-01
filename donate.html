@@ -11,7 +11,7 @@
 <site-nav base=""></site-nav>
 <div class="dnf"><div style="background:#fff;color:#1A1917;font-family:'Hanken Grotesk',sans-serif;min-height:100vh">
 <div style="max-width:620px;margin:0 auto;padding:70px 24px 64px;text-align:center">
-  <div style="font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#185ABD">Fuel the give-back</div>
+  <div style="font-size:14px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#185ABD"><svg viewBox="0 0 24 24" width="14" height="14" fill="#185ABD" style="display:inline-block;vertical-align:-2px;margin-right:8px"><path d="M12 21s-7.5-4.6-9.3-9C1.4 8.6 3.2 5.5 6.3 5.1c2-.3 3.7.7 4.7 2.2h2c1-1.5 2.7-2.5 4.7-2.2 3.1.4 4.9 3.5 3.6 6.9C19.5 16.4 12 21 12 21z"></path></svg>Fuel the give-back<svg viewBox="0 0 24 24" width="14" height="14" fill="#185ABD" style="display:inline-block;vertical-align:-2px;margin-left:8px"><path d="M12 21s-7.5-4.6-9.3-9C1.4 8.6 3.2 5.5 6.3 5.1c2-.3 3.7.7 4.7 2.2h2c1-1.5 2.7-2.5 4.7-2.2 3.1.4 4.9 3.5 3.6 6.9C19.5 16.4 12 21 12 21z"></path></svg></div>
   <h1 style="font-weight:800;font-size:52px;letter-spacing:-2px;line-height:1;margin:16px 0 12px">Give beyond the shirt.</h1>
   <p style="font-size:17px;line-height:1.6;color:#5a4f49;margin:0 auto 34px;max-width:480px">100% of every donation goes straight to our partners — clean water, youth ministry, meals, mental-health support, and the arts.</p>
   <div style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:30px;text-align:left;box-shadow:0 20px 50px rgba(0,0,0,.14)">
@@ -25,10 +25,12 @@
       <button class="dn-amt" data-amt="100" onclick="dnSetAmt(100,this)" style="padding:14px 0;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-weight:700;font-size:15px;background:#fff;color:#1A1917;cursor:pointer">$100</button>
     </div>
     <input id="dn-custom" placeholder="Other amount" oninput="dnSetCustom(this.value)" style="width:100%;box-sizing:border-box;padding:13px 15px;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-size:14px;background:#fff;color:#1A1917;margin-bottom:20px">
+    <input id="dn-email" type="email" placeholder="Add your email to receive updates and join our emails" style="width:100%;box-sizing:border-box;padding:13px 15px;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-size:14px;background:#fff;color:#1A1917;margin-bottom:20px">
     <div style="display:flex;flex-direction:column;gap:10px">
-      <button onclick="dnGo('stripe')" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#635BFF;color:#fff;border:none;font:inherit;font-weight:700;font-size:16px;padding:15px 0;border-radius:12px;cursor:pointer">Donate with Stripe</button>
-      <button onclick="dnGo('paypal')" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#FFC439;color:#1A1917;border:none;font:inherit;font-weight:700;font-size:16px;padding:15px 0;border-radius:12px;cursor:pointer">Donate with PayPal</button>
+      <button id="dn-stripe" onclick="dnGo('stripe')" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#635BFF;color:#fff;border:none;font:inherit;font-weight:700;font-size:16px;padding:15px 0;border-radius:12px;cursor:pointer">Donate with Stripe</button>
+      <button id="dn-paypal" onclick="dnGo('paypal')" style="display:flex;align-items:center;justify-content:center;gap:9px;width:100%;background:#FFC439;color:#1A1917;border:none;font:inherit;font-weight:700;font-size:16px;padding:15px 0;border-radius:12px;cursor:pointer">Donate with PayPal</button>
     </div>
+    <div id="dn-msg" style="display:none;margin-top:14px;padding:11px 14px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#FFF6F4;color:#8a3a25;font-size:13.5px;line-height:1.45"></div>
     <div style="text-align:center;font-size:12px;color:#8a7a6a;margin-top:14px">🔒 Payments are processed securely by Stripe and PayPal</div>
     <div style="text-align:center;font-size:12px;color:#8a7a6a;margin-top:2px">Donations are tax-deductible · you'll get a receipt by email</div>
   </div>
@@ -38,18 +40,10 @@
 <script src="site-chrome.js"></script>
 <script src="site.js"></script>
 <script>
-// ── PAYMENT CONFIG — fill these in when accounts are ready ──────────────
-// Stripe: create a Payment Link per amount+frequency in the Stripe Dashboard
-// (Payment Links → New), then paste the URLs below. Leave blank to disable.
-var STRIPE_LINKS = {
-  onetime: { 10: "", 25: "", 50: "", 100: "", custom: "" },
-  monthly: { 10: "", 25: "", 50: "", 100: "", custom: "" }
-};
-// PayPal: paste your PayPal.me link (e.g. "https://paypal.me/YourOrg") or
-// business email. Monthly gifts need a PayPal subscription button instead —
-// ask us to wire that up once you have one.
-var PAYPAL_LINK = "";
-// ─────────────────────────────────────────────────────────────────────────
+// Payments run through the site's own serverless endpoints:
+//   POST /api/donate          → Stripe Checkout Session (payment | subscription)
+//   POST /api/donate-paypal   → PayPal order (one-time) or subscription (monthly)
+// Amounts are validated and priced server-side; nothing here is trusted.
 
 var dnState = { freq: "onetime", amt: 25, custom: null };
 
@@ -82,16 +76,59 @@ function dnSetCustom(val) {
     });
   }
 }
-function dnGo(gateway) {
-  var amt = dnState.custom || dnState.amt;
-  if (gateway === "stripe") {
-    var key = dnState.custom ? "custom" : dnState.amt;
-    var url = STRIPE_LINKS[dnState.freq][key];
-    window.location.href = url || "#";
-  } else {
-    var url = PAYPAL_LINK ? PAYPAL_LINK + (PAYPAL_LINK.indexOf("paypal.me") > -1 ? "/" + amt : "") : "#";
-    window.location.href = url || "#";
+function dnAmount() { return dnState.custom || dnState.amt; }
+function dnEmail() {
+  var v = (document.getElementById("dn-email").value || "").trim();
+  return /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v) ? v : "";
+}
+
+function dnBtn(gateway) {
+  return document.getElementById(gateway === "stripe" ? "dn-stripe" : "dn-paypal");
+}
+function dnBusy(gateway, on, label) {
+  ["stripe", "paypal"].forEach(function (g) {
+    var b = dnBtn(g);
+    b.disabled = on;
+    b.style.opacity = on && g !== gateway ? ".5" : "1";
+    b.style.cursor = on ? "default" : "pointer";
+  });
+  var b = dnBtn(gateway);
+  if (on) { b.dataset.label = b.dataset.label || b.textContent; b.textContent = label || "Redirecting…"; }
+  else if (b.dataset.label) { b.textContent = b.dataset.label; }
+}
+function dnError(msg) {
+  var el = document.getElementById("dn-msg");
+  el.textContent = msg || "";
+  el.style.display = msg ? "block" : "none";
+}
+
+async function dnGo(gateway) {
+  var amount = dnAmount();
+  dnError("");
+  if (!(amount > 0)) { dnError("Enter a donation amount to continue."); return; }
+  if (amount < 1) { dnError("Minimum donation is $1."); return; }
+
+  dnBusy(gateway, true, gateway === "stripe" ? "Opening Stripe…" : "Opening PayPal…");
+  try {
+    var endpoint = gateway === "stripe" ? "/api/donate" : "/api/donate-paypal?action=create";
+    var r = await fetch(endpoint, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ amount: amount, frequency: dnState.freq, email: dnEmail() })
+    });
+    var data = await r.json().catch(function () { return {}; });
+    if (!r.ok || !data.url) throw new Error(data.error || "We couldn't start that donation. Please try again.");
+    window.location.href = data.url;
+  } catch (e) {
+    dnBusy(gateway, false);
+    dnError(e.message);
   }
+}
+
+// Returning from a canceled gateway redirect.
+if (location.search.indexOf("canceled=1") > -1) {
+  dnError("That donation was canceled — nothing was charged.");
+  history.replaceState(null, "", location.pathname);
 }
 </script>
 </body></html>

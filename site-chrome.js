@@ -87,6 +87,7 @@
                 '<a class="tsitem plain" href="' + base + 'prophetic-word.html"><span class="tslbl">Daily Prophetic Word</span></a>' +
                 '<a class="tsitem plain" href="' + base + 'devotional.html"><span class="tslbl">Daily Devotional</span></a>' +
                 '<a class="tsitem plain" href="' + base + 'affirmations.html"><span class="tslbl">Affirmations</span></a>' +
+                '<a class="tsitem plain" href="' + base + 'warfare.html"><span class="tslbl">Spiritual Warfare Prayers</span></a>' +
                 '<a class="tsitem plain" href="' + base + 'testimonies.html"><span class="tslbl">Testimonies</span></a>' +
               "</div>" +
             "</div>" +
@@ -113,6 +114,7 @@
               '<a class="plain" href="' + base + 'prophetic-word.html">Daily Prophetic Word</a>' +
               '<a class="plain" href="' + base + 'devotional.html">Daily Devotional</a>' +
               '<a class="plain" href="' + base + 'affirmations.html">Affirmations</a>' +
+              '<a class="plain" href="' + base + 'warfare.html">Spiritual Warfare Prayers</a>' +
               '<a class="plain" href="' + base + 'testimonies.html">Testimonies</a>' +
             "</div></details>" +
             '<details class="tsacc"><summary>Free Resources</summary><div class="tsacc-body">' +
@@ -181,27 +183,28 @@
   class SiteFooter extends HTMLElement {
     connectedCallback() {
       const base = this.getAttribute("base") || "";
-      const HEART = '<svg viewBox="0 0 24 24" width="11" height="11" fill="#FFFFFF" style="flex:none;margin-top:4px"><path d="M12 21s-7.5-4.6-9.3-9C1.4 8.6 3.2 5.5 6.3 5.1c2-.3 3.7.7 4.7 2.2h2c1-1.5 2.7-2.5 4.7-2.2 3.1.4 4.9 3.5 3.6 6.9C19.5 16.4 12 21 12 21z"></path></svg>';
-      const CROSS = '<svg viewBox="0 0 24 24" width="11" height="11" fill="#FFFFFF" style="flex:none;margin-top:4px"><path d="M9.6 2h4.8v5.6H20v4.8h-5.6V22H9.6v-9.6H4V7.6h5.6V2z"></path></svg>';
+      const HEART = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:3px"><path d="M12 20.5s-7.5-4.6-9.3-9C1.4 8.1 3.2 5 6.3 4.6c2-.3 3.7.7 4.7 2.2h2c1-1.5 2.7-2.5 4.7-2.2 3.1.4 4.9 3.5 3.6 6.9-1.8 4.4-9.3 9-9.3 9z"></path></svg>';
+      const SCROLL = '<svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="#FFFFFF" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:3px"><path d="M12 7.5v12"></path><path d="M12 7.5C10.4 6.2 8.2 5.5 5 5.5H2.5v12H5c3.2 0 5.4.7 7 2"></path><path d="M12 7.5c1.6-1.3 3.8-2 7-2h2.5v12H19c-3.2 0-5.4.7-7 2"></path></svg>';
+      const CROSS = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="#FFFFFF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:3px"><path d="M9.6 2.5h4.8v5.4H19.5v4.6h-5.1V21.5H9.6V12.5H4.5V7.9h5.1V2.5z"></path></svg>';
       const link = (href, label) => '<a class="plain" href="' + base + href + '" style="font-size:14px;color:#EDEAE4">' + label + "</a>";
       const bl = (icon) => (href, label) => '<a class="plain" href="' + base + href + '" style="display:flex;gap:8px;align-items:flex-start;font-size:14px;color:#EDEAE4">' + icon + '<span>' + label + '</span></a>';
-      const hlink = bl(HEART), clink = bl(CROSS);
+      const hlink = bl(SCROLL), heartlink = bl(HEART), clink = bl(CROSS);
       const colh = (t) => '<div style="font-size:15px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#FFFFFF;margin-bottom:4px">' + t + '</div>';
       const col = (title, items) => '<div style="display:grid;gap:9px;align-content:start;min-width:0">' + colh(title) + items.join("") + '</div>';
       this.innerHTML =
         '<footer style="background:linear-gradient(135deg,#2E7AC4 0%,#17538F 28%,#0C3268 62%,#071E42 100%);color:#EDEAE4;padding:54px 34px 28px;font-family:\'Hanken Grotesk\',sans-serif">' +
-          '<div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start">' +
+          '<div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">' +
             '<div style="max-width:260px">' +
               '<a class="plain" href="' + base + 'index.html" style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:50%;background:#41A5EE"></span><span style="font-weight:800;letter-spacing:-.4px;font-size:19px">Love &amp; Love YAH</span></a>' +
               '<p style="color:#FFFFFF;font-size:14px;line-height:1.6;margin:14px 0 18px">We make faith wearable. Every shirt, mug and handmade piece carries the Word into everyday life &mdash; and 10% of every purchase is donated to a Christian ministry, mission, charity or non-profit. We also are grateful to provide resources to help you grow closer to The Lord (Yahushah Hamashiach / Jesus Christ) and support our brothers and sisters in prayer.</p>' +
               '<div style="display:flex;gap:10px">' + SOCIAL.map((s) => '<a href="#" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);color:#EDEAE4">' + s + "</a>").join("") + "</div>" +
             "</div>" +
-            '<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:26px 18px;flex:1;min-width:560px">' +
+            '<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px 10px;flex:1;min-width:560px">' +
               col("Clothing &amp; Accessories", [clink("t-shirts.html","Shirts"), clink("hoodies.html","Hoodies"), clink("hats.html","Hats"), clink("jewelry.html","Jewelry")]) +
               col("Household", [clink("cups.html","Drinkware"), clink("mugs.html","Mugs"), clink("tumblers.html","Water Bottles")]) +
-              col("Art and Decor", [clink("paintings.html","Art"), clink("posters.html","Posters"), clink("woodworking.html","Wood"), clink("glasswork.html","Glass"), clink("stickers.html","Stickers"), clink("magnets.html","Magnets")]) +
-              col("Daily Bread", [hlink("daily-verse.html","Daily Verse"), hlink("prophetic-word.html","Daily Prophetic Word"), hlink("devotional.html","Daily Devotional"), hlink("affirmations.html","Affirmations"), hlink("testimonies.html","Testimonies")]) +
-              col("Community", [hlink("radio.html","Live Radio"), hlink("testimonies.html","Testimonies"), hlink("scripture-resources.html","Bible Verses"), hlink("inspirational-graphics.html","Inspiration"), hlink("contact.html","Contact"), hlink("give-back.html","Give Back"), hlink("donate.html","Donation"), hlink("prayer.html","Prayer Request")]) +
+              col("Art &amp; Decor", [clink("paintings.html","Art"), clink("posters.html","Posters"), clink("woodworking.html","Wood"), clink("glasswork.html","Glass"), clink("stickers.html","Stickers"), clink("magnets.html","Magnets")]) +
+              col("Daily Bread", [hlink("daily-verse.html","Daily Verse"), hlink("prophetic-word.html","Daily Prophetic Word"), hlink("devotional.html","Daily Devotional"), hlink("affirmations.html","Affirmations"), hlink("warfare.html","Spiritual Warfare Prayers"), hlink("testimonies.html","Testimonies")]) +
+              col("Community", [heartlink("radio.html","Live Radio"), heartlink("testimonies.html","Testimonies"), heartlink("scripture-resources.html","Bible Verses"), heartlink("inspirational-graphics.html","Inspiration"), heartlink("contact.html","Contact"), heartlink("give-back.html","Give Back"), heartlink("donate.html","Donation"), heartlink("prayer.html","Prayer Request")]) +
             "</div>" +
           "</div>" +
           '<div style="max-width:1180px;margin:34px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12px;color:#BBD8F5">' +

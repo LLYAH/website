@@ -18,7 +18,7 @@
 <site-nav base=""></site-nav>
 <div class="ckf"><div style="background:#fff;color:#1A1917;font-family:'Hanken Grotesk',sans-serif;min-height:100vh">
   <div style="max-width:1180px;margin:0 auto;padding:56px 24px 90px">
-    <div style="font-size:12px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#185ABD">Checkout</div>
+    <div style="font-size:14px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#185ABD">Checkout<svg viewBox="0 0 24 24" width="14" height="14" fill="#185ABD" style="display:inline-block;vertical-align:-2px;margin-left:8px"><path d="M12 21s-7.5-4.6-9.3-9C1.4 8.6 3.2 5.5 6.3 5.1c2-.3 3.7.7 4.7 2.2h2c1-1.5 2.7-2.5 4.7-2.2 3.1.4 4.9 3.5 3.6 6.9C19.5 16.4 12 21 12 21z"></path></svg></div>
     <h1 style="font-weight:800;font-size:42px;letter-spacing:-1.6px;line-height:1.02;margin:14px 0 30px">Complete your order</h1>
 
     <div id="ck-empty" style="display:none;padding:60px 0;text-align:center;border:1px dashed rgba(0,0,0,.16);border-radius:16px">
@@ -68,10 +68,12 @@
         <div id="ck-items" style="display:flex;flex-direction:column;gap:12px;margin-bottom:18px"></div>
         <div style="border-top:1px solid rgba(43,35,32,.14);padding-top:16px">
           <div style="display:flex;justify-content:space-between;font-size:15px;color:#5a4f49;margin-bottom:10px"><span>Subtotal</span><span id="ck-subtotal">$0.00</span></div>
+          <div id="ck-discount-row" style="display:none;justify-content:space-between;font-size:15px;color:#1a7d4a;margin-bottom:10px"><span id="ck-discount-label">Discount</span><span id="ck-discount">−$0.00</span></div>
           <div style="display:flex;justify-content:space-between;font-size:15px;color:#5a4f49;margin-bottom:10px"><span>Shipping</span><span id="ck-shipping">$0.00</span></div>
           <div style="display:flex;justify-content:space-between;font-size:15px;color:#5a4f49;margin-bottom:16px"><span>Estimated tax</span><span id="ck-tax">$0.00</span></div>
           <div style="display:flex;justify-content:space-between;font-size:19px;font-weight:800;margin-bottom:20px"><span>Total</span><span id="ck-total">$0.00</span></div>
         </div>
+        <div id="ck-msg" style="display:none;margin-bottom:14px;padding:11px 14px;border:1px solid rgba(0,0,0,.12);border-radius:10px;background:#FFF6F4;color:#8a3a25;font-size:13.5px;line-height:1.45"></div>
         <button id="ck-place-order" onclick="ckPlaceOrder()" style="width:100%;background:#41A5EE;color:#fff;border:none;font:inherit;font-weight:700;font-size:16px;padding:15px 0;border-radius:12px;cursor:pointer">Place order</button>
         <div style="text-align:center;font-size:12px;color:#8a7a6a;margin-top:12px">🔒 Payments are processed securely by Stripe and PayPal</div>
         <div style="text-align:center;font-size:12px;color:#8a7a6a;margin-top:2px">10% of every order is donated automatically</div>
@@ -84,56 +86,121 @@
 <script src="site.js"></script>
 <script src="cart.js"></script>
 <script>
-// ── PAYMENT CONFIG — fill in when accounts are ready ──────────────
-// Stripe: arbitrary cart totals need a Checkout Session created server-side
-// (Payment Links are fixed-price). Paste that session-creation endpoint here
-// once you have a backend, or a Stripe-hosted Checkout URL.
-var STRIPE_CHECKOUT_URL = "";
-// PayPal: paste your PayPal.me link (e.g. "https://paypal.me/YourOrg"). The
-// order total is appended automatically. Leave blank to disable.
-var PAYPAL_LINK = "";
-// ─────────────────────────────────────────────────────────────────────────
+// Orders run through the site's own serverless endpoints:
+//   POST /api/checkout           → Stripe Checkout Session
+//   POST /api/checkout-paypal    → PayPal order (Orders v2)
+// The browser sends item ids + quantities only. Prices, discounts, shipping
+// and tax are all recomputed server-side from the catalog in api/_lib/catalog.js,
+// so a tampered cart can never change what is charged.
 
 function money(n) { return "$" + n.toFixed(2); }
+function ckCoupon() { try { return localStorage.getItem("llyCoupon") || ""; } catch (e) { return ""; } }
+
+function ckQuote() {
+  const cart = LLYCart.getCart();
+  const subtotal = LLYCart.cartSubtotal();
+  const c = LLYCart.applyCoupon(ckCoupon());
+  let discount = 0;
+  if (c) discount = Math.min(c.pct ? subtotal * (c.pct / 100) : c.flat, subtotal);
+  const afterDiscount = subtotal - discount;
+  const state = (document.getElementById("ck-state").value || "").toUpperCase();
+  let shipping = subtotal > 0 ? (subtotal >= 75 ? 0 : 6.95) : 0;
+  if (state === "AK" || state === "HI") shipping += 12;
+  const tax = afterDiscount * 0.07;
+  return { cart, subtotal, coupon: c, discount, shipping, tax, total: afterDiscount + shipping + tax };
+}
 
 function ckRender() {
-  const cart = LLYCart.getCart();
-  document.getElementById("ck-empty").style.display = cart.length ? "none" : "block";
-  document.getElementById("ck-filled").style.display = cart.length ? "grid" : "none";
-  document.getElementById("ck-items").innerHTML = cart.map((it) => (
+  const q = ckQuote();
+  document.getElementById("ck-empty").style.display = q.cart.length ? "none" : "block";
+  document.getElementById("ck-filled").style.display = q.cart.length ? "grid" : "none";
+  document.getElementById("ck-items").innerHTML = q.cart.map((it) => (
     '<div style="display:flex;gap:12px;align-items:center">' +
       '<div style="width:52px;height:52px;border-radius:8px;background:' + it.color + ';flex:none"></div>' +
       '<div style="flex:1"><div style="font-size:14px;font-weight:700">' + it.name + '</div><div style="font-size:12px;color:#8a7a6a">Qty ' + it.qty + '</div></div>' +
       '<div style="font-size:14px;font-weight:700">' + money(it.price * it.qty) + '</div>' +
     '</div>'
   )).join("");
-  const subtotal = LLYCart.cartSubtotal();
-  const shipping = subtotal > 0 ? (subtotal >= 75 ? 0 : 6.95) : 0;
-  const tax = subtotal * 0.07;
-  const total = subtotal + shipping + tax;
-  document.getElementById("ck-subtotal").textContent = money(subtotal);
-  document.getElementById("ck-shipping").textContent = shipping === 0 ? "Free" : money(shipping);
-  document.getElementById("ck-tax").textContent = money(tax);
-  document.getElementById("ck-total").textContent = money(total);
+  const row = document.getElementById("ck-discount-row");
+  if (q.coupon && q.discount > 0) {
+    row.style.display = "flex";
+    document.getElementById("ck-discount-label").textContent = "Discount (" + q.coupon.label + ")";
+    document.getElementById("ck-discount").textContent = "−" + money(q.discount);
+  } else { row.style.display = "none"; }
+  document.getElementById("ck-subtotal").textContent = money(q.subtotal);
+  document.getElementById("ck-shipping").textContent = q.shipping === 0 ? "Free" : money(q.shipping);
+  document.getElementById("ck-tax").textContent = money(q.tax);
+  document.getElementById("ck-total").textContent = money(q.total);
 }
 
-function ckPlaceOrder() {
+function ckError(msg) {
+  const el = document.getElementById("ck-msg");
+  el.textContent = msg || "";
+  el.style.display = msg ? "block" : "none";
+}
+
+function ckVal(id) { return (document.getElementById(id).value || "").trim(); }
+
+async function ckPlaceOrder() {
   const cart = LLYCart.getCart();
   if (!cart.length) return;
+  ckError("");
+
+  const email = ckVal("ck-email");
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { ckError("Enter a valid email so we can send your confirmation."); return; }
+  if (!ckVal("ck-fname") || !ckVal("ck-lname") || !ckVal("ck-addr1") || !ckVal("ck-city") || !ckVal("ck-state") || !ckVal("ck-zip")) {
+    ckError("Please complete your shipping address."); return;
+  }
+
   const method = document.querySelector('input[name="ck-pay"]:checked').value;
-  const subtotal = LLYCart.cartSubtotal();
-  const shipping = subtotal >= 75 ? 0 : 6.95;
-  const total = (subtotal + shipping + subtotal * 0.07).toFixed(2);
-  if (method === "paypal" && PAYPAL_LINK) {
-    window.location.href = PAYPAL_LINK + (PAYPAL_LINK.indexOf("paypal.me") > -1 ? "/" + total : "");
-  } else if (method === "stripe" && STRIPE_CHECKOUT_URL) {
-    window.location.href = STRIPE_CHECKOUT_URL;
-  } else {
-    alert("Payment isn't connected yet — add your Stripe/PayPal details in checkout.html to accept real payments. (Order total would be " + money(parseFloat(total)) + ".)");
+  const btn = document.getElementById("ck-place-order");
+  const label = btn.textContent;
+  btn.disabled = true;
+  btn.style.cursor = "default";
+  btn.textContent = method === "stripe" ? "Opening Stripe…" : "Opening PayPal…";
+
+  const payload = {
+    items: cart.map(function (i) { return { id: i.id, qty: i.qty }; }),
+    coupon: ckCoupon(),
+    email: email,
+    phone: ckVal("ck-phone"),
+    notes: ckVal("ck-notes"),
+    address: {
+      first_name: ckVal("ck-fname"), last_name: ckVal("ck-lname"),
+      line1: ckVal("ck-addr1"), line2: ckVal("ck-addr2"),
+      city: ckVal("ck-city"), state: ckVal("ck-state").toUpperCase(), postal: ckVal("ck-zip")
+    }
+  };
+
+  try {
+    const r = await fetch(method === "stripe" ? "/api/checkout" : "/api/checkout-paypal?action=create", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+    const data = await r.json().catch(function () { return {}; });
+    if (!r.ok || !data.url) throw new Error(data.error || "We couldn't start checkout. Please try again.");
+    try { sessionStorage.setItem("llyPendingOrder", JSON.stringify({ email: email, notes: payload.notes, address: payload.address })); } catch (e) {}
+    window.location.href = data.url;
+  } catch (e) {
+    btn.disabled = false;
+    btn.style.cursor = "pointer";
+    btn.textContent = label;
+    ckError(e.message);
   }
 }
 
-document.addEventListener("DOMContentLoaded", ckRender);
+if (location.search.indexOf("canceled=1") > -1) {
+  document.addEventListener("DOMContentLoaded", function () {
+    ckError("Checkout was canceled — nothing was charged and your cart is intact.");
+    history.replaceState(null, "", location.pathname);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  ckRender();
+  document.getElementById("ck-state").addEventListener("input", ckRender);
+});
 document.addEventListener("cart:change", ckRender);
 </script>
 </body></html>

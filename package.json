@@ -1,0 +1,13 @@
+{
+  "name": "love-and-love-yah",
+  "private": true,
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "stripe": "^16.12.0",
+    "@vercel/postgres": "^0.10.0"
+  },
+  "type": "module"
+}

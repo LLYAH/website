@@ -135,7 +135,7 @@
     if (pill) pill.textContent = "Cart (" + ((parseInt((pill.textContent.match(/\d+/) || [0])[0], 10) || 0) + 1) + ")";
     if (window.LLYCart) {
       var swatch = c.querySelector('[data-on="1"]');
-      LLYCart.addToCart({ id: "pb-" + size + "-" + color, name: "Faith Over Fear Tee \u00b7 Park Badge \u00b7 " + size + " \u00b7 " + color, price: parseFloat(price.textContent), color: (swatch && (swatch.style.background || swatch.style.backgroundColor)) || "#DCE6F4", category: "T-Shirts" });
+      LLYCart.addToCart({ id: "pb-" + size + "-" + color + "-" + price.textContent, name: "Faith Over Fear Tee \u00b7 Park Badge \u00b7 " + size + " \u00b7 " + color, price: parseFloat(price.textContent), color: (swatch && (swatch.style.background || swatch.style.backgroundColor)) || "#DCE6F4", category: "T-Shirts" });
     }
   });
 })();
