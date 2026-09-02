@@ -94,7 +94,7 @@
   .tm-track > div > div[style*="border-radius:18px"]{box-shadow:none!important}
   .home-more > div{box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14)}
   .tm-arrow,.dv-arrow,.tm-dot,.dv-dot{box-shadow:0 2px 5px rgba(0,0,0,.22)!important}
-  .tee-grid a.plain[style]{box-shadow:none!important;border:1px solid rgba(43,35,32,.12)!important}
+  .tee-grid a.plain[style]{box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14)!important;border:1px solid rgba(43,35,32,.12)!important}
   @media(max-width:1000px){.tm-grid,.rd-grid,.bv-year,.home-more,.cat-grid,.res-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
   @media(max-width:1180px){.tsnavlinks .tslink{display:none}}
   @media(max-width:860px){.shop-split,.tee-grid{grid-template-columns:1fr!important}}

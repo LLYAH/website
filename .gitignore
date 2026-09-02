@@ -1,5 +1,7 @@
 .env.blob
 .env.blob2
 .env*.local
+.env
 node_modules/
 .claude/
+.vercel/
