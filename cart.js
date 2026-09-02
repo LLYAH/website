@@ -3,18 +3,18 @@
   const KEY = "llyCart";
 
   const CATALOG = [
-    { id: "wood-1", name: "Carved Wall Cross", price: 88, color: "#DCE6F4", category: "Woodworking", href: "woodworking.html" },
-    { id: "wood-2", name: "Family Verse Sign", price: 140, color: "#E7E3DB", category: "Woodworking", href: "woodworking.html" },
-    { id: "wood-3", name: "Walnut Prayer Box", price: 96, color: "#D6DFEA", category: "Woodworking", href: "woodworking.html" },
-    { id: "wood-4", name: "Communion Tray", price: 180, color: "#DCE6F4", category: "Woodworking", href: "woodworking.html" },
-    { id: "wood-5", name: "Live-Edge Shelf", price: 210, color: "#E7E3DB", category: "Woodworking", href: "woodworking.html" },
-    { id: "wood-6", name: "Engraved Bible Stand", price: 120, color: "#D6DFEA", category: "Woodworking", href: "woodworking.html" },
-    { id: "glass-1", name: "Stained Cross Panel", price: 320, color: "#DCE6F4", category: "Glasswork", href: "glasswork.html" },
-    { id: "glass-2", name: "Dove Suncatcher", price: 78, color: "#E7E3DB", category: "Glasswork", href: "glasswork.html" },
-    { id: "glass-3", name: "Fused Verse Tile", price: 110, color: "#D6DFEA", category: "Glasswork", href: "glasswork.html" },
-    { id: "glass-4", name: "Chapel Window Study", price: 540, color: "#DCE6F4", category: "Glasswork", href: "glasswork.html" },
-    { id: "glass-5", name: "Rose Window Round", price: 260, color: "#E7E3DB", category: "Glasswork", href: "glasswork.html" },
-    { id: "glass-6", name: "Candle Lantern", price: 140, color: "#D6DFEA", category: "Glasswork", href: "glasswork.html" }
+    { id: "wood-1", name: "Carved Wall Cross", price: 88, color: "#DCE6F4", category: "Woodworking", href: "christian-woodworking.html" },
+    { id: "wood-2", name: "Family Verse Sign", price: 140, color: "#E7E3DB", category: "Woodworking", href: "christian-woodworking.html" },
+    { id: "wood-3", name: "Walnut Prayer Box", price: 96, color: "#D6DFEA", category: "Woodworking", href: "christian-woodworking.html" },
+    { id: "wood-4", name: "Communion Tray", price: 180, color: "#DCE6F4", category: "Woodworking", href: "christian-woodworking.html" },
+    { id: "wood-5", name: "Live-Edge Shelf", price: 210, color: "#E7E3DB", category: "Woodworking", href: "christian-woodworking.html" },
+    { id: "wood-6", name: "Engraved Bible Stand", price: 120, color: "#D6DFEA", category: "Woodworking", href: "christian-woodworking.html" },
+    { id: "glass-1", name: "Stained Cross Panel", price: 320, color: "#DCE6F4", category: "Glasswork", href: "christian-glasswork.html" },
+    { id: "glass-2", name: "Dove Suncatcher", price: 78, color: "#E7E3DB", category: "Glasswork", href: "christian-glasswork.html" },
+    { id: "glass-3", name: "Fused Verse Tile", price: 110, color: "#D6DFEA", category: "Glasswork", href: "christian-glasswork.html" },
+    { id: "glass-4", name: "Chapel Window Study", price: 540, color: "#DCE6F4", category: "Glasswork", href: "christian-glasswork.html" },
+    { id: "glass-5", name: "Rose Window Round", price: 260, color: "#E7E3DB", category: "Glasswork", href: "christian-glasswork.html" },
+    { id: "glass-6", name: "Candle Lantern", price: 140, color: "#D6DFEA", category: "Glasswork", href: "christian-glasswork.html" }
   ];
 
   const COUPONS = {

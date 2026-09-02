@@ -1,4 +1,57 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/t-shirts", "destination": "/christian-t-shirts", "permanent": true },
+    { "source": "/t-shirts.html", "destination": "/christian-t-shirts", "permanent": true },
+    { "source": "/t-shirts/:path*", "destination": "/christian-t-shirts/:path*", "permanent": true },
+
+    { "source": "/hoodies", "destination": "/christian-hoodies", "permanent": true },
+    { "source": "/hoodies.html", "destination": "/christian-hoodies", "permanent": true },
+    { "source": "/hoodies/:path*", "destination": "/christian-hoodies/:path*", "permanent": true },
+
+    { "source": "/jewelry", "destination": "/christian-jewelry", "permanent": true },
+    { "source": "/jewelry.html", "destination": "/christian-jewelry", "permanent": true },
+    { "source": "/jewelry/:path*", "destination": "/christian-jewelry/:path*", "permanent": true },
+
+    { "source": "/hats", "destination": "/christian-hats", "permanent": true },
+    { "source": "/hats.html", "destination": "/christian-hats", "permanent": true },
+    { "source": "/hats/:path*", "destination": "/christian-hats/:path*", "permanent": true },
+
+    { "source": "/mugs", "destination": "/christian-mugs", "permanent": true },
+    { "source": "/mugs.html", "destination": "/christian-mugs", "permanent": true },
+    { "source": "/mugs/:path*", "destination": "/christian-mugs/:path*", "permanent": true },
+
+    { "source": "/posters", "destination": "/christian-posters", "permanent": true },
+    { "source": "/posters.html", "destination": "/christian-posters", "permanent": true },
+    { "source": "/posters/:path*", "destination": "/christian-posters/:path*", "permanent": true },
+
+    { "source": "/paintings", "destination": "/christian-paintings", "permanent": true },
+    { "source": "/paintings.html", "destination": "/christian-paintings", "permanent": true },
+    { "source": "/paintings/:path*", "destination": "/christian-paintings/:path*", "permanent": true },
+
+    { "source": "/stickers", "destination": "/christian-stickers", "permanent": true },
+    { "source": "/stickers.html", "destination": "/christian-stickers", "permanent": true },
+    { "source": "/stickers/:path*", "destination": "/christian-stickers/:path*", "permanent": true },
+
+    { "source": "/magnets", "destination": "/christian-magnets", "permanent": true },
+    { "source": "/magnets.html", "destination": "/christian-magnets", "permanent": true },
+    { "source": "/magnets/:path*", "destination": "/christian-magnets/:path*", "permanent": true },
+
+    { "source": "/cups", "destination": "/christian-cups", "permanent": true },
+    { "source": "/cups.html", "destination": "/christian-cups", "permanent": true },
+    { "source": "/cups/:path*", "destination": "/christian-cups/:path*", "permanent": true },
+
+    { "source": "/tumblers", "destination": "/christian-tumblers", "permanent": true },
+    { "source": "/tumblers.html", "destination": "/christian-tumblers", "permanent": true },
+    { "source": "/tumblers/:path*", "destination": "/christian-tumblers/:path*", "permanent": true },
+
+    { "source": "/woodworking", "destination": "/christian-woodworking", "permanent": true },
+    { "source": "/woodworking.html", "destination": "/christian-woodworking", "permanent": true },
+    { "source": "/woodworking/:path*", "destination": "/christian-woodworking/:path*", "permanent": true },
+
+    { "source": "/glasswork", "destination": "/christian-glasswork", "permanent": true },
+    { "source": "/glasswork.html", "destination": "/christian-glasswork", "permanent": true },
+    { "source": "/glasswork/:path*", "destination": "/christian-glasswork/:path*", "permanent": true }
+  ]
 }

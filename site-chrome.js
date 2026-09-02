@@ -2,32 +2,32 @@
    Usage: <site-nav base="./"></site-nav>  /  <site-footer base="../"></site-footer> */
 (function () {
   const CATS = [
-    ["t-shirts", "T-Shirts"],
-    ["hoodies", "Hoodies &amp; Sweatshirts"],
-    ["jewelry", "Jewelry"],
-    ["hats", "Hats &amp; Headwear"],
-    ["mugs", "Coffee Mugs"],
-    ["posters", "Posters &amp; Wall Art"],
-    ["paintings", "Paintings"],
-    ["stickers", "Stickers &amp; Decals"],
-    ["magnets", "Magnets"],
-    ["cups", "Cups &amp; Glasses"],
-    ["tumblers", "Tumblers &amp; Water Bottles"],
-    ["woodworking", "Woodworking"],
-    ["glasswork", "Glasswork"]
+    ["christian-t-shirts", "T-Shirts"],
+    ["christian-hoodies", "Hoodies &amp; Sweatshirts"],
+    ["christian-jewelry", "Jewelry"],
+    ["christian-hats", "Hats &amp; Headwear"],
+    ["christian-mugs", "Coffee Mugs"],
+    ["christian-posters", "Posters &amp; Wall Art"],
+    ["christian-paintings", "Paintings"],
+    ["christian-stickers", "Stickers &amp; Decals"],
+    ["christian-magnets", "Magnets"],
+    ["christian-cups", "Cups &amp; Glasses"],
+    ["christian-tumblers", "Tumblers &amp; Water Bottles"],
+    ["christian-woodworking", "Woodworking"],
+    ["christian-glasswork", "Glasswork"]
   ];
   const SUBS = {
-    "hats": [["Baseball Cap", "baseball-cap"], ["Beanie", "beanie"], ["Bucket", "bucket"], ["Camo", "camo"], ["Fitted", "fitted"], ["Trucker", "trucker"], ["Mesh Back", "mesh-back"], ["Snapback", "snapback"], ["Visor", "visor"], ["Wide Brim Sun Hat", "wide-brim-sun-hat"]],
-    "mugs": [["11Oz", "11oz"], ["15Oz", "15oz"], ["Camping", "camping"], ["Ceramic", "ceramic"], ["Coffee", "coffee"], ["Enamel", "enamel"], ["Gift Set", "gift-set"], ["Stoneware", "stoneware"], ["Travel", "travel"]],
-    "posters": [["Canvas", "canvas"], ["Posters", "posters"], ["Wall Art", "wall-art"]],
-    "stickers": [["Decals", "decals"], ["Stickers", "stickers"], ["Bumper Stickers", "bumper-stickers"]],
-    "magnets": [["Car Magnet", "car-magnet"], ["Fridge Magnet", "fridge-magnet"], ["Locker Magnet", "locker-magnet"], ["Magnet Set", "magnet-set"]],
-    "cups": [["Drinking Glass Set", "drinking-glass-set"], ["Mason Jar Cup", "mason-jar-cup"], ["Pint Glass", "pint-glass"], ["Rocks Glass", "rocks-glass"], ["Wine Glass", "wine-glass"]],
-    "tumblers": [["20Oz Tumbler", "20oz-tumbler"], ["Glass Water Bottle", "glass-water-bottle"], ["Insulated Tumbler", "insulated-tumbler"], ["Skinny Tumbler", "skinny-tumbler"], ["Stainless Tumbler", "stainless-tumbler"], ["Stanley Style Tumbler", "stanley-style-tumbler"], ["Travel Water Bottle", "travel-water-bottle"], ["Tumbler With Straw", "tumbler-with-straw"], ["Water Bottle", "water-bottle"], ["Workout Bottle", "workout-bottle"]],
-    "jewelry": [["Bracelets", "bracelets"], ["Earrings", "earrings"], ["Pendants", "pendants"], ["Necklaces", "necklaces"], ["Rings", "rings"]],
-    "paintings": [["Canvas Painting Print", "canvas-painting-print"], ["Fine Art Print", "fine-art-print"], ["Framed Painting Print", "framed-painting-print"], ["Giclee Art Print", "giclee-art-print"], ["Hand-Painted Look Print", "hand-painted-look-print"], ["Oil Painting Style Print", "oil-painting-style-print"], ["Watercolor Style Print", "watercolor-style-print"]],
-    "woodworking": [["Wood Signs &amp; Decor", "wood-signs-and-decor"], ["Wood Cut &amp; Engraving Files", "wood-cut-and-engraving-files"]],
-    "glasswork": [["Etched Glass Decor", "etched-glass-decor"], ["Glass Block Decor", "glass-block-decor"], ["Glass Cross Ornament", "glass-cross-ornament"], ["Glass Keepsake Box", "glass-keepsake-box"], ["Glass Ornament", "glass-ornament"], ["Glass Wall Hanging", "glass-wall-hanging"], ["Stained Glass Suncatcher", "stained-glass-suncatcher"]]
+    "christian-hats": [["Baseball Cap", "baseball-cap"], ["Beanie", "beanie"], ["Bucket", "bucket"], ["Camo", "camo"], ["Fitted", "fitted"], ["Trucker", "trucker"], ["Mesh Back", "mesh-back"], ["Snapback", "snapback"], ["Visor", "visor"], ["Wide Brim Sun Hat", "wide-brim-sun-hat"]],
+    "christian-mugs": [["11Oz", "11oz"], ["15Oz", "15oz"], ["Camping", "camping"], ["Ceramic", "ceramic"], ["Coffee", "coffee"], ["Enamel", "enamel"], ["Gift Set", "gift-set"], ["Stoneware", "stoneware"], ["Travel", "travel"]],
+    "christian-posters": [["Canvas", "canvas"], ["Posters", "posters"], ["Wall Art", "wall-art"]],
+    "christian-stickers": [["Decals", "decals"], ["Stickers", "stickers"], ["Bumper Stickers", "bumper-stickers"]],
+    "christian-magnets": [["Car Magnet", "car-magnet"], ["Fridge Magnet", "fridge-magnet"], ["Locker Magnet", "locker-magnet"], ["Magnet Set", "magnet-set"]],
+    "christian-cups": [["Drinking Glass Set", "drinking-glass-set"], ["Mason Jar Cup", "mason-jar-cup"], ["Pint Glass", "pint-glass"], ["Rocks Glass", "rocks-glass"], ["Wine Glass", "wine-glass"]],
+    "christian-tumblers": [["20Oz Tumbler", "20oz-tumbler"], ["Glass Water Bottle", "glass-water-bottle"], ["Insulated Tumbler", "insulated-tumbler"], ["Skinny Tumbler", "skinny-tumbler"], ["Stainless Tumbler", "stainless-tumbler"], ["Stanley Style Tumbler", "stanley-style-tumbler"], ["Travel Water Bottle", "travel-water-bottle"], ["Tumbler With Straw", "tumbler-with-straw"], ["Water Bottle", "water-bottle"], ["Workout Bottle", "workout-bottle"]],
+    "christian-jewelry": [["Bracelets", "bracelets"], ["Earrings", "earrings"], ["Pendants", "pendants"], ["Necklaces", "necklaces"], ["Rings", "rings"]],
+    "christian-paintings": [["Canvas Painting Print", "canvas-painting-print"], ["Fine Art Print", "fine-art-print"], ["Framed Painting Print", "framed-painting-print"], ["Giclee Art Print", "giclee-art-print"], ["Hand-Painted Look Print", "hand-painted-look-print"], ["Oil Painting Style Print", "oil-painting-style-print"], ["Watercolor Style Print", "watercolor-style-print"]],
+    "christian-woodworking": [["Wood Signs &amp; Decor", "wood-signs-and-decor"], ["Wood Cut &amp; Engraving Files", "wood-cut-and-engraving-files"]],
+    "christian-glasswork": [["Etched Glass Decor", "etched-glass-decor"], ["Glass Block Decor", "glass-block-decor"], ["Glass Cross Ornament", "glass-cross-ornament"], ["Glass Keepsake Box", "glass-keepsake-box"], ["Glass Ornament", "glass-ornament"], ["Glass Wall Hanging", "glass-wall-hanging"], ["Stained Glass Suncatcher", "stained-glass-suncatcher"]]
   };
   const THEMES = [
     ["Faith Statement", "faith-statement"],
@@ -70,8 +70,8 @@
               '<button class="tsbtn" type="button">Shop <span class="car">▼</span></button>' +
               '<div class="tsmenu">' +
                 '<div class="megacats"><div class="tscolh" style="padding-left:10px">Shop by category</div>' + rail + "</div>" +
-                '<div class="megacols megasubs" data-for="tshirts"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">T-Shirts — shop by theme</div>' + themeItems(base, "t-shirts") + '<a class="tsitem plain" href="' + base + 't-shirts.html"><span class="tslbl" style="font-weight:700">All T-Shirts →</span></a></div>' +
-                '<div class="megacols megasubs" data-for="hoodies"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">Hoodies &amp; Sweatshirts — shop by theme</div>' + themeItems(base, "hoodies") + '<a class="tsitem plain" href="' + base + 'hoodies.html"><span class="tslbl" style="font-weight:700">All Hoodies &amp; Sweatshirts →</span></a></div>' +
+                '<div class="megacols megasubs" data-for="tshirts"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">T-Shirts — shop by theme</div>' + themeItems(base, "christian-t-shirts") + '<a class="tsitem plain" href="' + base + 'christian-t-shirts.html"><span class="tslbl" style="font-weight:700">All T-Shirts →</span></a></div>' +
+                '<div class="megacols megasubs" data-for="hoodies"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">Hoodies &amp; Sweatshirts — shop by theme</div>' + themeItems(base, "christian-hoodies") + '<a class="tsitem plain" href="' + base + 'christian-hoodies.html"><span class="tslbl" style="font-weight:700">All Hoodies &amp; Sweatshirts →</span></a></div>' +
                 Object.keys(SUBS).map(function (slug) {
                   const label = (CATS.find((c) => c[0] === slug) || [slug, slug])[1];
                   return '<div class="megacols megasubs" data-for="' + slug + '" style="display:none"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">' + label + ' — shop by type</div>' +
@@ -162,7 +162,7 @@
         const ci = e.target.closest(".catitem");
         if (!ci) return;
         const cat = ci.dataset.cat;
-        const want = cat === "hoodies" ? "hoodies" : (SUBS[cat] ? cat : "tshirts");
+        const want = cat === "christian-hoodies" ? "hoodies" : (SUBS[cat] ? cat : "tshirts");
         this.querySelectorAll(".catitem").forEach((a) => a.removeAttribute("data-on"));
         ci.setAttribute("data-on", "1");
         this.querySelectorAll(".megacols").forEach((p) => {
@@ -200,9 +200,9 @@
               '<div style="display:flex;gap:10px">' + SOCIAL.map((s) => '<a href="#" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);color:#EDEAE4">' + s + "</a>").join("") + "</div>" +
             "</div>" +
             '<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px 10px;flex:1;min-width:560px">' +
-              col("Clothing &amp; Accessories", [clink("t-shirts.html","Shirts"), clink("hoodies.html","Hoodies"), clink("hats.html","Hats"), clink("jewelry.html","Jewelry")]) +
-              col("Household", [clink("cups.html","Drinkware"), clink("mugs.html","Mugs"), clink("tumblers.html","Water Bottles")]) +
-              col("Art &amp; Decor", [clink("paintings.html","Art"), clink("posters.html","Posters"), clink("woodworking.html","Wood"), clink("glasswork.html","Glass"), clink("stickers.html","Stickers"), clink("magnets.html","Magnets")]) +
+              col("Clothing &amp; Accessories", [clink("christian-t-shirts.html","Shirts"), clink("christian-hoodies.html","Hoodies"), clink("christian-hats.html","Hats"), clink("christian-jewelry.html","Jewelry")]) +
+              col("Household", [clink("christian-cups.html","Drinkware"), clink("christian-mugs.html","Mugs"), clink("christian-tumblers.html","Water Bottles")]) +
+              col("Art &amp; Decor", [clink("christian-paintings.html","Art"), clink("christian-posters.html","Posters"), clink("christian-woodworking.html","Wood"), clink("christian-glasswork.html","Glass"), clink("christian-stickers.html","Stickers"), clink("christian-magnets.html","Magnets")]) +
               col("Daily Bread", [hlink("daily-verse.html","Daily Verse"), hlink("prophetic-word.html","Daily Prophetic Word"), hlink("devotional.html","Daily Devotional"), hlink("affirmations.html","Affirmations"), hlink("warfare.html","Spiritual Warfare Prayers"), hlink("testimonies.html","Testimonies")]) +
               col("Community", [heartlink("radio.html","Live Radio"), heartlink("testimonies.html","Testimonies"), heartlink("scripture-resources.html","Bible Verses"), heartlink("inspirational-graphics.html","Inspiration"), heartlink("contact.html","Contact"), heartlink("give-back.html","Give Back"), heartlink("donate.html","Donation"), heartlink("prayer.html","Prayer Request")]) +
             "</div>" +
