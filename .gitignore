@@ -2,3 +2,4 @@
 .env.blob2
 .env*.local
 node_modules/
+.claude/

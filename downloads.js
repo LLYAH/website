@@ -15,6 +15,10 @@
  * Nothing else needs editing when artwork is added — the button probes the URL, downloads it
  * if it exists, and shows "coming soon" if it does not. Availability is cached per page load.
  *
+ * MULTIPLE STORES: CONFIG.blobBaseByStyle can point individual styles at different Blob
+ * stores (e.g. to stay under a Hobby-plan per-account storage cap by spreading styles
+ * across stores). Falls back to CONFIG.blobBase for any style not listed there.
+ *
  * OVERRIDES: HOSTED["page/set/platform/style"] = url  pins one combination to an exact URL.
  * FALLBACK: with no blobBase configured, the browser builds the zip itself from loose PNGs.
  * Each set lists its filenames once in CATALOG; STYLE_DIR maps the four art styles to the
@@ -27,6 +31,15 @@ window.LLYDownloads = (function () {
   var CONFIG = {
     /* Public Vercel Blob base, no trailing slash. Leave "" to use the client-side builder. */
     blobBase: "",
+    /* Per-style Blob base override — lets a style's zips live in a different Blob store
+       than blobBase (e.g. spread across two stores to stay under a Hobby-plan storage cap).
+       Falls back to blobBase for any style not listed here. */
+    blobBaseByStyle: {
+      bold: "https://iknja0sz3iezsupv.public.blob.vercel-storage.com/downloads",
+      elegant: "https://iknja0sz3iezsupv.public.blob.vercel-storage.com/downloads",
+      modern: "https://vyvjy34c4uhbztqv.public.blob.vercel-storage.com/downloads",
+      urban: "https://vyvjy34c4uhbztqv.public.blob.vercel-storage.com/downloads"
+    },
     /* PRODUCTION SWITCH. Set true once the real zips are on Blob: the browser then serves
        only what actually exists there, and any combination whose zip is missing shows
        "coming soon" instead of quietly handing out a small sample zip built from uploads/. */
@@ -181,8 +194,9 @@ window.LLYDownloads = (function () {
   function blobUrl(page, set, plat, style) {
     var pinned = HOSTED[key(page, set, plat, style)];
     if (pinned) return pinned;
-    if (!CONFIG.blobBase) return null;
-    return CONFIG.blobBase.replace(/\/$/, "") + "/" + page + "/" + set + "/" + filename(page, set, plat, style);
+    var base = (CONFIG.blobBaseByStyle && CONFIG.blobBaseByStyle[style]) || CONFIG.blobBase;
+    if (!base) return null;
+    return base.replace(/\/$/, "") + "/" + page + "/" + set + "/" + filename(page, set, plat, style);
   }
 
   /* Resolves to the url if the zip really exists, else null. Cached per url. */
