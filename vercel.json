@@ -2,56 +2,510 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/t-shirts", "destination": "/christian-t-shirts", "permanent": true },
-    { "source": "/t-shirts.html", "destination": "/christian-t-shirts", "permanent": true },
-    { "source": "/t-shirts/:path*", "destination": "/christian-t-shirts/:path*", "permanent": true },
-
-    { "source": "/hoodies", "destination": "/christian-hoodies", "permanent": true },
-    { "source": "/hoodies.html", "destination": "/christian-hoodies", "permanent": true },
-    { "source": "/hoodies/:path*", "destination": "/christian-hoodies/:path*", "permanent": true },
-
-    { "source": "/jewelry", "destination": "/christian-jewelry", "permanent": true },
-    { "source": "/jewelry.html", "destination": "/christian-jewelry", "permanent": true },
-    { "source": "/jewelry/:path*", "destination": "/christian-jewelry/:path*", "permanent": true },
-
-    { "source": "/hats", "destination": "/christian-hats", "permanent": true },
-    { "source": "/hats.html", "destination": "/christian-hats", "permanent": true },
-    { "source": "/hats/:path*", "destination": "/christian-hats/:path*", "permanent": true },
-
-    { "source": "/mugs", "destination": "/christian-mugs", "permanent": true },
-    { "source": "/mugs.html", "destination": "/christian-mugs", "permanent": true },
-    { "source": "/mugs/:path*", "destination": "/christian-mugs/:path*", "permanent": true },
-
-    { "source": "/posters", "destination": "/christian-posters", "permanent": true },
-    { "source": "/posters.html", "destination": "/christian-posters", "permanent": true },
-    { "source": "/posters/:path*", "destination": "/christian-posters/:path*", "permanent": true },
-
-    { "source": "/paintings", "destination": "/christian-paintings", "permanent": true },
-    { "source": "/paintings.html", "destination": "/christian-paintings", "permanent": true },
-    { "source": "/paintings/:path*", "destination": "/christian-paintings/:path*", "permanent": true },
-
-    { "source": "/stickers", "destination": "/christian-stickers", "permanent": true },
-    { "source": "/stickers.html", "destination": "/christian-stickers", "permanent": true },
-    { "source": "/stickers/:path*", "destination": "/christian-stickers/:path*", "permanent": true },
-
-    { "source": "/magnets", "destination": "/christian-magnets", "permanent": true },
-    { "source": "/magnets.html", "destination": "/christian-magnets", "permanent": true },
-    { "source": "/magnets/:path*", "destination": "/christian-magnets/:path*", "permanent": true },
-
-    { "source": "/cups", "destination": "/christian-cups", "permanent": true },
-    { "source": "/cups.html", "destination": "/christian-cups", "permanent": true },
-    { "source": "/cups/:path*", "destination": "/christian-cups/:path*", "permanent": true },
-
-    { "source": "/tumblers", "destination": "/christian-tumblers", "permanent": true },
-    { "source": "/tumblers.html", "destination": "/christian-tumblers", "permanent": true },
-    { "source": "/tumblers/:path*", "destination": "/christian-tumblers/:path*", "permanent": true },
-
-    { "source": "/woodworking", "destination": "/christian-woodworking", "permanent": true },
-    { "source": "/woodworking.html", "destination": "/christian-woodworking", "permanent": true },
-    { "source": "/woodworking/:path*", "destination": "/christian-woodworking/:path*", "permanent": true },
-
-    { "source": "/glasswork", "destination": "/christian-glasswork", "permanent": true },
-    { "source": "/glasswork.html", "destination": "/christian-glasswork", "permanent": true },
-    { "source": "/glasswork/:path*", "destination": "/christian-glasswork/:path*", "permanent": true }
+    {
+      "source": "/t-shirts",
+      "destination": "/christian-t-shirts",
+      "permanent": true
+    },
+    {
+      "source": "/t-shirts.html",
+      "destination": "/christian-t-shirts",
+      "permanent": true
+    },
+    {
+      "source": "/hoodies",
+      "destination": "/christian-hoodies",
+      "permanent": true
+    },
+    {
+      "source": "/hoodies.html",
+      "destination": "/christian-hoodies",
+      "permanent": true
+    },
+    {
+      "source": "/hats",
+      "destination": "/christian-hats",
+      "permanent": true
+    },
+    {
+      "source": "/hats.html",
+      "destination": "/christian-hats",
+      "permanent": true
+    },
+    {
+      "source": "/mugs",
+      "destination": "/christian-mugs",
+      "permanent": true
+    },
+    {
+      "source": "/mugs.html",
+      "destination": "/christian-mugs",
+      "permanent": true
+    },
+    {
+      "source": "/cups",
+      "destination": "/christian-cups",
+      "permanent": true
+    },
+    {
+      "source": "/cups.html",
+      "destination": "/christian-cups",
+      "permanent": true
+    },
+    {
+      "source": "/tumblers",
+      "destination": "/christian-tumblers",
+      "permanent": true
+    },
+    {
+      "source": "/tumblers.html",
+      "destination": "/christian-tumblers",
+      "permanent": true
+    },
+    {
+      "source": "/jewelry",
+      "destination": "/christian-jewelry",
+      "permanent": true
+    },
+    {
+      "source": "/jewelry.html",
+      "destination": "/christian-jewelry",
+      "permanent": true
+    },
+    {
+      "source": "/stickers",
+      "destination": "/christian-stickers",
+      "permanent": true
+    },
+    {
+      "source": "/stickers.html",
+      "destination": "/christian-stickers",
+      "permanent": true
+    },
+    {
+      "source": "/magnets",
+      "destination": "/christian-magnets",
+      "permanent": true
+    },
+    {
+      "source": "/magnets.html",
+      "destination": "/christian-magnets",
+      "permanent": true
+    },
+    {
+      "source": "/posters",
+      "destination": "/christian-posters",
+      "permanent": true
+    },
+    {
+      "source": "/posters.html",
+      "destination": "/christian-posters",
+      "permanent": true
+    },
+    {
+      "source": "/paintings",
+      "destination": "/christian-paintings",
+      "permanent": true
+    },
+    {
+      "source": "/paintings.html",
+      "destination": "/christian-paintings",
+      "permanent": true
+    },
+    {
+      "source": "/glasswork",
+      "destination": "/christian-glasswork",
+      "permanent": true
+    },
+    {
+      "source": "/glasswork.html",
+      "destination": "/christian-glasswork",
+      "permanent": true
+    },
+    {
+      "source": "/woodworking",
+      "destination": "/christian-woodworking",
+      "permanent": true
+    },
+    {
+      "source": "/woodworking.html",
+      "destination": "/christian-woodworking",
+      "permanent": true
+    },
+    {
+      "source": "/christian-stickers/stickers",
+      "destination": "/christian-stickers/christian-vinyl-stickers",
+      "permanent": true
+    },
+    {
+      "source": "/stickers/stickers",
+      "destination": "/christian-stickers/christian-vinyl-stickers",
+      "permanent": true
+    },
+    {
+      "source": "/christian-posters/posters",
+      "destination": "/christian-posters/bible-verse-scripture-posters",
+      "permanent": true
+    },
+    {
+      "source": "/posters/posters",
+      "destination": "/christian-posters/bible-verse-scripture-posters",
+      "permanent": true
+    },
+    {
+      "source": "/christian-t-shirts/faith-statement",
+      "destination": "/christian-t-shirts/faith-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/t-shirts/faith-statement",
+      "destination": "/christian-t-shirts/faith-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-t-shirts/cross",
+      "destination": "/christian-t-shirts/cross-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/t-shirts/cross",
+      "destination": "/christian-t-shirts/cross-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-t-shirts/jesus-and-god",
+      "destination": "/christian-t-shirts/jesus-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/t-shirts/jesus-and-god",
+      "destination": "/christian-t-shirts/jesus-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-t-shirts/yeshuah-and-yahushah",
+      "destination": "/christian-t-shirts/yahweh-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/t-shirts/yeshuah-and-yahushah",
+      "destination": "/christian-t-shirts/yahweh-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-t-shirts/bible-verse",
+      "destination": "/christian-t-shirts/bible-verses-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/t-shirts/bible-verse",
+      "destination": "/christian-t-shirts/bible-verses-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-t-shirts/love",
+      "destination": "/christian-t-shirts/love-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/t-shirts/love",
+      "destination": "/christian-t-shirts/love-shirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hoodies/faith-statement",
+      "destination": "/christian-hoodies/faith-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/hoodies/faith-statement",
+      "destination": "/christian-hoodies/faith-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hoodies/cross",
+      "destination": "/christian-hoodies/cross-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/hoodies/cross",
+      "destination": "/christian-hoodies/cross-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hoodies/jesus-and-god",
+      "destination": "/christian-hoodies/jesus-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/hoodies/jesus-and-god",
+      "destination": "/christian-hoodies/jesus-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hoodies/yeshuah-and-yahushah",
+      "destination": "/christian-hoodies/yahweh-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/hoodies/yeshuah-and-yahushah",
+      "destination": "/christian-hoodies/yahweh-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hoodies/bible-verse",
+      "destination": "/christian-hoodies/bible-verses-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/hoodies/bible-verse",
+      "destination": "/christian-hoodies/bible-verses-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hoodies/love",
+      "destination": "/christian-hoodies/love-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/hoodies/love",
+      "destination": "/christian-hoodies/love-sweatshirt",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hats/baseball-cap",
+      "destination": "/christian-hats/christian-baseball-hat",
+      "permanent": true
+    },
+    {
+      "source": "/hats/baseball-cap",
+      "destination": "/christian-hats/christian-baseball-hat",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hats/bucket",
+      "destination": "/christian-hats/christian-bucket-hat",
+      "permanent": true
+    },
+    {
+      "source": "/hats/bucket",
+      "destination": "/christian-hats/christian-bucket-hat",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hats/camo",
+      "destination": "/christian-hats/christian-camo-hat",
+      "permanent": true
+    },
+    {
+      "source": "/hats/camo",
+      "destination": "/christian-hats/christian-camo-hat",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hats/fitted",
+      "destination": "/christian-hats/christian-fitted-hat",
+      "permanent": true
+    },
+    {
+      "source": "/hats/fitted",
+      "destination": "/christian-hats/christian-fitted-hat",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hats/trucker",
+      "destination": "/christian-hats/christian-trucker-hat",
+      "permanent": true
+    },
+    {
+      "source": "/hats/trucker",
+      "destination": "/christian-hats/christian-trucker-hat",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hats/mesh-back",
+      "destination": "/christian-hats/christian-mesh-back-hat",
+      "permanent": true
+    },
+    {
+      "source": "/hats/mesh-back",
+      "destination": "/christian-hats/christian-mesh-back-hat",
+      "permanent": true
+    },
+    {
+      "source": "/christian-hats/snapback",
+      "destination": "/christian-hats/christian-snapback-hat",
+      "permanent": true
+    },
+    {
+      "source": "/hats/snapback",
+      "destination": "/christian-hats/christian-snapback-hat",
+      "permanent": true
+    },
+    {
+      "source": "/christian-mugs/camping",
+      "destination": "/christian-mugs/christian-camping-coffee-cup",
+      "permanent": true
+    },
+    {
+      "source": "/mugs/camping",
+      "destination": "/christian-mugs/christian-camping-coffee-cup",
+      "permanent": true
+    },
+    {
+      "source": "/christian-mugs/ceramic",
+      "destination": "/christian-mugs/christian-ceramic-mug",
+      "permanent": true
+    },
+    {
+      "source": "/mugs/ceramic",
+      "destination": "/christian-mugs/christian-ceramic-mug",
+      "permanent": true
+    },
+    {
+      "source": "/christian-mugs/coffee",
+      "destination": "/christian-mugs/christian-coffee-cup",
+      "permanent": true
+    },
+    {
+      "source": "/mugs/coffee",
+      "destination": "/christian-mugs/christian-coffee-cup",
+      "permanent": true
+    },
+    {
+      "source": "/christian-mugs/enamel",
+      "destination": "/christian-mugs/christian-enamel-mug",
+      "permanent": true
+    },
+    {
+      "source": "/mugs/enamel",
+      "destination": "/christian-mugs/christian-enamel-mug",
+      "permanent": true
+    },
+    {
+      "source": "/christian-mugs/gift-set",
+      "destination": "/christian-mugs/christian-coffee-mug-gift-set",
+      "permanent": true
+    },
+    {
+      "source": "/mugs/gift-set",
+      "destination": "/christian-mugs/christian-coffee-mug-gift-set",
+      "permanent": true
+    },
+    {
+      "source": "/christian-mugs/stoneware",
+      "destination": "/christian-mugs/christian-stoneware-stone-coffee-mug",
+      "permanent": true
+    },
+    {
+      "source": "/mugs/stoneware",
+      "destination": "/christian-mugs/christian-stoneware-stone-coffee-mug",
+      "permanent": true
+    },
+    {
+      "source": "/christian-mugs/travel",
+      "destination": "/christian-mugs/christian-travel-mug",
+      "permanent": true
+    },
+    {
+      "source": "/mugs/travel",
+      "destination": "/christian-mugs/christian-travel-mug",
+      "permanent": true
+    },
+    {
+      "source": "/christian-stickers/bumper-stickers",
+      "destination": "/christian-stickers/christian-bumper-sticker",
+      "permanent": true
+    },
+    {
+      "source": "/stickers/bumper-stickers",
+      "destination": "/christian-stickers/christian-bumper-sticker",
+      "permanent": true
+    },
+    {
+      "source": "/christian-stickers/decals",
+      "destination": "/christian-stickers/christian-decals",
+      "permanent": true
+    },
+    {
+      "source": "/stickers/decals",
+      "destination": "/christian-stickers/christian-decals",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "destination": "/christian-merch",
+      "permanent": true
+    },
+    {
+      "source": "/shop.html",
+      "destination": "/christian-merch",
+      "permanent": true
+    },
+    {
+      "source": "/t-shirts/:slug*",
+      "destination": "/christian-t-shirts/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/hoodies/:slug*",
+      "destination": "/christian-hoodies/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/hats/:slug*",
+      "destination": "/christian-hats/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/mugs/:slug*",
+      "destination": "/christian-mugs/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/cups/:slug*",
+      "destination": "/christian-cups/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/tumblers/:slug*",
+      "destination": "/christian-tumblers/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/jewelry/:slug*",
+      "destination": "/christian-jewelry/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/stickers/:slug*",
+      "destination": "/christian-stickers/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/magnets/:slug*",
+      "destination": "/christian-magnets/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/posters/:slug*",
+      "destination": "/christian-posters/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/paintings/:slug*",
+      "destination": "/christian-paintings/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/glasswork/:slug*",
+      "destination": "/christian-glasswork/:slug*",
+      "permanent": true
+    },
+    {
+      "source": "/woodworking/:slug*",
+      "destination": "/christian-woodworking/:slug*",
+      "permanent": true
+    }
   ]
 }

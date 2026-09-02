@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Page not found · Love &amp; Love YAH</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
+</head><body>
+<site-nav base=""></site-nav>
+<div style="background:#fff;color:#1A1917;font-family:'Hanken Grotesk',sans-serif;min-height:100vh">
+<div style="max-width:660px;margin:0 auto;padding:78px 24px 70px;text-align:center">
+  <div style="font-size:14px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#185ABD">Error 404</div>
+  <h1 style="font-weight:800;font-size:56px;letter-spacing:-2.4px;line-height:1;margin:16px 0 14px">This page wandered off.</h1>
+  <p style="font-size:18px;line-height:1.6;color:#5a4f49;margin:0 auto 30px;max-width:470px">The link you followed doesn't lead anywhere on our site. It may have moved, or the address may have a typo in it.</p>
+
+  <div style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;padding:30px;text-align:left;box-shadow:0 20px 50px rgba(0,0,0,.14)">
+    <p style="font-size:22px;line-height:1.45;letter-spacing:-.4px;margin:0 0 10px;text-wrap:pretty">"Your ears will hear a voice behind you, saying, 'This is the way. Walk in it.'"</p>
+    <div style="font-size:13px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#185ABD">Isaiah 30:21 · WEB</div>
+    <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:26px">
+      <a class="plain nf-link" href="index.html" style="text-align:center;background:#41A5EE;color:#fff;font-weight:700;font-size:15px;padding:14px 0;border-radius:12px">Back to home</a>
+      <a class="plain nf-link" href="daily-verse.html" style="text-align:center;background:#fff;color:#1A1917;border:1px solid rgba(0,0,0,.14);font-weight:700;font-size:15px;padding:14px 0;border-radius:12px">Verse of the day</a>
+      <a class="plain nf-link" href="christian-merch.html" style="text-align:center;background:#fff;color:#1A1917;border:1px solid rgba(0,0,0,.14);font-weight:700;font-size:15px;padding:14px 0;border-radius:12px">Shop the store</a>
+      <a class="plain nf-link" href="prayer.html" style="text-align:center;background:#fff;color:#1A1917;border:1px solid rgba(0,0,0,.14);font-weight:700;font-size:15px;padding:14px 0;border-radius:12px">Request prayer</a>
+    </div>
+    <div id="nf-path" style="display:none;font-size:12.5px;color:#8a7a6a;margin-top:18px;word-break:break-all"></div>
+  </div>
+
+  <p style="font-size:13px;color:#8a7a6a;margin:26px auto 0;max-width:470px">If a link on our site sent you here, tell us at hello@loveandloveyah.com and we'll fix it.</p>
+</div></div>
+<site-footer base=""></site-footer>
+<script>
+/* Vercel serves this file for any missing URL, including nested ones like
+   /t-shirts/typo — so resolve asset/link paths against the site root when the
+   address we were served at is deeper than the file itself. */
+(function () {
+  var p = location.pathname;
+  var direct = /404(\.html)?$/.test(p);
+  var depth = direct ? 0 : Math.max(0, p.split("/").length - 2);
+  var base = new Array(depth + 1).join("../");
+
+  if (base) {
+    var css = document.querySelector('link[href="site.css"]');
+    if (css) css.href = base + "site.css";
+    document.querySelector("site-nav").setAttribute("base", base);
+    document.querySelector("site-footer").setAttribute("base", base);
+    Array.prototype.forEach.call(document.querySelectorAll(".nf-link"), function (a) {
+      a.setAttribute("href", base + a.getAttribute("href"));
+    });
+  }
+  ["site-chrome.js", "cart.js"].forEach(function (src) {
+    var s = document.createElement("script");
+    s.src = base + src;
+    document.body.appendChild(s);
+  });
+
+  var full = p + location.search;
+  if (!direct) {
+    var el = document.getElementById("nf-path");
+    el.textContent = "Requested address: " + full;
+    el.style.display = "block";
+  }
+})();
+</script>
+</body></html>
