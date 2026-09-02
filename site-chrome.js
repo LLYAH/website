@@ -209,7 +209,7 @@
           "</div>" +
           '<div style="max-width:1180px;margin:34px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12px;color:#BBD8F5">' +
             "<span>© 2026 Love &amp; Love YAH. All rights reserved. <a class=\"plain\" href=\"https://crosstownseo.com\" target=\"_blank\" rel=\"noopener\" style=\"color:#CFE3F8;text-decoration:underline\">Website design by CROSSTOWN SEO</a></span>" +
-            '<span style="display:flex;gap:16px"><span>Privacy</span><span>Terms</span><span>Shipping &amp; Returns</span></span>' +
+            '<span style="display:flex;gap:16px"><span>Privacy</span><span>Terms</span><span>Shipping &amp; Returns</span><a class="plain" href="' + base + 'sitemap.xml" style="color:#BBD8F5;text-decoration:underline">Sitemap</a></span>' +
           "</div>" +
         "</footer>";
     }
