@@ -14,30 +14,30 @@
   <div style="max-width:1080px;margin:0 auto;padding:64px 24px 0">
     <div style="font-size:14px;font-weight:800;letter-spacing:2.5px;text-transform:uppercase;color:#185ABD">Daily Bread<svg viewBox="0 0 24 24" width="14" height="14" fill="#185ABD" style="display:inline-block;vertical-align:-2px;margin-left:8px"><path d="M12 21s-7.5-4.6-9.3-9C1.4 8.6 3.2 5.5 6.3 5.1c2-.3 3.7.7 4.7 2.2h2c1-1.5 2.7-2.5 4.7-2.2 3.1.4 4.9 3.5 3.6 6.9C19.5 16.4 12 21 12 21z"></path></svg></div>
     <h1 style="font-weight:800;font-size:54px;letter-spacing:-2.2px;line-height:1.02;margin:16px 0 12px">Daily Prophetic Word</h1>
-    <p style="font-size:17px;line-height:1.6;color:#5a4f49;max-width:620px;margin:0 0 32px;text-wrap:pretty">A word for today, posted each morning at 6am. Read it, weigh it against Scripture, and keep what the Spirit confirms in you.</p>
+    <p style="font-size:21px;line-height:1.55;color:#5a4f49;max-width:680px;margin:0 0 32px;text-wrap:pretty">A prophetic word for today. Read it, weigh it against Scripture, and keep what the Holy Spirit confirms in you.</p>
   </div>
 
   <div style="max-width:1080px;margin:0 auto;padding:0 24px">
-    <div class="bv-look" style="border-radius:18px;padding:36px 38px">
+    <div class="bv-look" id="pw-card" style="border-radius:18px;padding:36px 38px">
       <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:baseline;margin-bottom:18px">
-        <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD">Today · August 25</div>
-        <div style="font-size:13px;color:#8a7a6a">Posted 6:00am CT</div>
+        <div style="display:flex;align-items:center;gap:14px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD" id="pw-today">Today · August 25</div><button id="pw-back" type="button" style="display:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff;font:inherit;font-weight:700;font-size:12px;padding:6px 12px;border-radius:99px;cursor:pointer">Today’s word</button></div>
+        <div style="display:flex;align-items:center"><svg viewBox="0 0 38 24" width="34" height="22" fill="none" stroke="#fff" stroke-width="1.6" style="opacity:.9;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))"><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z"></path><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z" transform="translate(14 0)"></path></svg></div>
       </div>
-      <p style="font-family:'Libre Caslon Display',serif;font-size:30px;line-height:1.35;letter-spacing:-.6px;margin:0 0 22px;max-width:760px;text-wrap:pretty">The ground you have been praying over is not barren. What you planted in the quiet season is rooting deeper than you can see, and this is the month the roots find water. Do not trade a slow harvest for a fast one.</p>
+      <p id="pw-word" style="font-family:'Hanken Grotesk',sans-serif;font-size:30px;line-height:1.35;letter-spacing:-.6px;margin:0 0 22px;max-width:760px;text-wrap:pretty">The ground you have been praying over is not barren. What you planted in the quiet season is rooting deeper than you can see, and this is the month the roots find water. Do not trade a slow harvest for a fast one.</p>
       <div style="height:1px;background:rgba(0,0,0,.1);margin:0 0 22px"></div>
       <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px" class="pw-grid">
         <div>
-          <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Scripture</div>
-          <p style="font-size:15px;line-height:1.6;color:#3a322d;margin:0">"For he shall be as a tree planted by the waters, that spreadeth out its roots by the river."</p>
-          <div style="font-size:13px;font-weight:700;color:#185ABD;margin-top:8px">Jeremiah 17:8 · ASV</div>
+          <div style="font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Scripture</div>
+          <p id="pw-scripture" style="font-size:17px;line-height:1.6;color:#3a322d;margin:0">"For he will be as a tree planted by the waters, who spreads out its roots by the river."</p>
+          <div style="font-size:15px;font-weight:700;color:#185ABD;margin-top:8px" id="pw-sref">Jeremiah 17:8 · WEB</div>
         </div>
         <div>
-          <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Prayer</div>
-          <p style="font-size:15px;line-height:1.6;color:#3a322d;margin:0">Father, give me the patience of a farmer. Teach me to water what You planted and to wait without striving.</p>
+          <div style="font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Prayer</div>
+          <p id="pw-prayer" style="font-size:17px;line-height:1.6;color:#3a322d;margin:0">Father, give me the patience of a farmer. Teach me to water what You planted and to wait without striving.</p>
         </div>
         <div>
-          <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Carry it today</div>
-          <p style="font-size:15px;line-height:1.6;color:#3a322d;margin:0">Name one thing you have been tempted to abandon early. Give it one more week of prayer before you decide.</p>
+          <div style="font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Carry it today</div>
+          <p id="pw-carry" style="font-size:17px;line-height:1.6;color:#3a322d;margin:0">Name one thing you have been tempted to abandon early. Give it one more week of prayer before you decide.</p>
         </div>
       </div>
     </div>
@@ -45,36 +45,104 @@
 
   <div style="max-width:1080px;margin:0 auto;padding:34px 24px 0">
     <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-bottom:16px">
-      <h2 style="font-size:24px;font-weight:800;letter-spacing:-.8px;margin:0">This week</h2>
-      <span style="font-size:13px;color:#8a7a6a">Words are kept for 30 days</span>
+      <h2 style="font-size:24px;font-weight:800;letter-spacing:-.8px;margin:0">Previous Prophetic Words</h2>
+      <span id="pw-week-range" style="font-size:13px;color:#8a7a6a"></span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px" class="pw-grid">
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">August 24</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917">He is not asking you to be loud. He is asking you to be steady where He put you.</p><div style="font-size:13px;font-weight:700;color:#8a7a6a">1 Thessalonians 4:11 · ASV</div></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">August 23</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917">The door you knocked on last year is not the door He is opening. Turn around and look.</p><div style="font-size:13px;font-weight:700;color:#8a7a6a">Isaiah 43:19 · ASV</div></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">August 22</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917">Forgive the person you keep rehearsing in your mind. That rehearsal is the weight, not the person.</p><div style="font-size:13px;font-weight:700;color:#8a7a6a">Colossians 3:13 · ASV</div></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">August 21</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917">Provision is already on the road. Keep your hands open and your mouth grateful.</p><div style="font-size:13px;font-weight:700;color:#8a7a6a">Philippians 4:19 · ASV</div></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">August 20</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917">Stop asking Him to bless a plan you have not surrendered. Bring the whole thing.</p><div style="font-size:13px;font-weight:700;color:#8a7a6a">Proverbs 16:3 · ASV</div></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">August 19</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917">Your prayers for your family are not lost. He keeps every one of them.</p><div style="font-size:13px;font-weight:700;color:#8a7a6a">Revelation 5:8 · ASV</div></div>
+    <div id="pw-week" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px" class="pw-grid">
+      <div style="background:#fff;border:1px solid rgba(43,35,32,.1);border-radius:14px;padding:22px;box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px" class="pw-wd">August 24</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917" class="pw-text">He is not asking you to be loud. He is asking you to be steady where He put you.</p><div class="pw-ref" style="font-size:15px;font-weight:700;color:#185ABD">1 Thessalonians 4:11 · WEB</div></div>
+      <div style="background:#fff;border:1px solid rgba(43,35,32,.1);border-radius:14px;padding:22px;box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px" class="pw-wd">August 23</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917" class="pw-text">The door you knocked on last year is not the door He is opening. Turn around and look.</p><div class="pw-ref" style="font-size:15px;font-weight:700;color:#185ABD">Isaiah 43:19 · WEB</div></div>
+      <div style="background:#fff;border:1px solid rgba(43,35,32,.1);border-radius:14px;padding:22px;box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px" class="pw-wd">August 22</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917" class="pw-text">Forgive the person you keep rehearsing in your mind. That rehearsal is the weight, not the person.</p><div class="pw-ref" style="font-size:15px;font-weight:700;color:#185ABD">Colossians 3:13 · WEB</div></div>
+      <div style="background:#fff;border:1px solid rgba(43,35,32,.1);border-radius:14px;padding:22px;box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px" class="pw-wd">August 21</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917" class="pw-text">Provision is already on the road. Keep your hands open and your mouth grateful.</p><div class="pw-ref" style="font-size:15px;font-weight:700;color:#185ABD">Philippians 4:19 · WEB</div></div>
+      <div style="background:#fff;border:1px solid rgba(43,35,32,.1);border-radius:14px;padding:22px;box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px" class="pw-wd">August 20</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917" class="pw-text">Stop asking Him to bless a plan you have not surrendered. Bring the whole thing.</p><div class="pw-ref" style="font-size:15px;font-weight:700;color:#185ABD">Proverbs 16:3 · WEB</div></div>
+      <div style="background:#fff;border:1px solid rgba(43,35,32,.1);border-radius:14px;padding:22px;box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px" class="pw-wd">August 19</div><p style="font-size:16px;line-height:1.5;margin:0 0 12px;color:#1A1917" class="pw-text">Your prayers for your family are not lost. He keeps every one of them.</p><div class="pw-ref" style="font-size:15px;font-weight:700;color:#185ABD">Revelation 5:8 · WEB</div></div>
     </div>
   </div>
 
   <div style="max-width:1080px;margin:0 auto;padding:34px 24px 0">
-    <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:16px;padding:26px 24px">
-      <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">How to weigh a word</div>
-      <p style="font-size:16px;line-height:1.6;color:#3a322d;margin:0;max-width:760px">"Despise not prophesyings; prove all things; hold fast that which is good." Nothing posted here overrides Scripture, your pastor, or the counsel of your church. Test it, pray it, and set aside what does not sit right.</p>
-      <div style="font-size:13px;font-weight:700;color:#8a7a6a;margin-top:10px">1 Thessalonians 5:20–21 · ASV</div>
+    <div style="background:linear-gradient(135deg,#B9A4E8 0%,#A288D8 45%,#7A5FB5 100%);border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:30px 30px;position:relative;box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);">
+      <div style="font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:12px;font-size:13px;text-shadow:0 1px 2px rgba(0,0,0,.22)">How to weigh a word</div>
+      <p style="font-size:20px;line-height:1.6;color:#fff;margin:0;max-width:1040px;text-shadow:0 1px 2px rgba(0,0,0,.22)">"Don’t despise prophesies. Test all things, and hold firmly that which is good." Nothing posted here overrides Scripture, your pastor, or the counsel of your church. Test it, pray it, and set aside what does not sit right.</p>
+      <div style="font-size:16px;font-weight:700;color:#fff;margin-top:12px;text-shadow:0 1px 2px rgba(0,0,0,.22)">1 Thessalonians 5:20–21 · WEB</div><svg viewBox="0 0 38 24" width="38" height="24" fill="none" stroke="#fff" stroke-width="1.6" style="position:absolute;right:20px;bottom:18px;opacity:.85;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))"><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z"></path><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z" transform="translate(14 0)"></path></svg>
     </div>
   </div>
 
-  <div style="max-width:1080px;margin:0 auto;padding:34px 24px 70px">
+  <div style="max-width:1080px;margin:0 auto;padding:34px 24px 34px">
     <div style="background:linear-gradient(135deg,#FFFFFF 0%,#FFFFFF 33%,#F7F4EF 66%,#EFEBE4 100%);color:#1A1917;border:1px solid rgba(43,35,32,.1);box-shadow:0 18px 40px rgba(43,35,32,.10);border-radius:18px;padding:32px 34px;display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:space-between">
       <div style="max-width:520px"><div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:8px">Every morning</div><p style="font-size:19px;line-height:1.5;margin:0;letter-spacing:-.3px">Get the word in your inbox before the day starts.</p></div>
       <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="plain" href="contact.html" style="background:#41A5EE;color:#fff;font-weight:700;font-size:15px;padding:13px 22px;border-radius:12px">Send it to me</a><a class="plain" href="prayer.html" style="background:transparent;color:#1A1917;border:1px solid rgba(43,35,32,.22);font-weight:700;font-size:15px;padding:13px 22px;border-radius:12px">Ask for prayer</a></div>
     </div>
   </div>
 
+  <div style="max-width:1080px;margin:0 auto;padding:0 24px 56px"><p style="font-size:12.5px;line-height:1.6;color:#8a7a6a;margin:0;max-width:760px;padding-top:22px;border-top:1px solid rgba(43,35,32,.1)">Scripture quotations are taken from the World English Bible (WEB), a public domain modern English translation of the Holy Bible. No permission is required for its use.</p></div>
 </div></div>
 <site-footer base=""></site-footer>
+<script src="prophetic-words.js"></script>
 <script src="site-chrome.js"></script>
 <script src="site.js"></script>
+<script>
+(function(){
+  var TZ='America/Chicago';
+  function ctNow(){
+    var o={};new Intl.DateTimeFormat('en-US',{timeZone:TZ,year:'numeric',month:'numeric',day:'numeric'})
+      .formatToParts(new Date()).forEach(function(x){o[x.type]=x.value});
+    return new Date(Date.UTC(+o.year,+o.month-1,+o.day));
+  }
+  function fmt(dt,opt){opt.timeZone='UTC';return new Intl.DateTimeFormat('en-US',opt).format(dt)}
+  var W=window.LLYWords||[],today=ctNow();
+  // continuous day count, so the list cycles on repeat without resetting each Jan 1
+  function dayIndex(dt){
+    return Math.floor(Date.UTC(dt.getUTCFullYear(),dt.getUTCMonth(),dt.getUTCDate())/86400000);
+  }
+  function firstSentence(s){
+    var m=/^[\s\S]*?[.!?](?=\s|$)/.exec(s||'');
+    return m?m[0]:(s||'');
+  }
+  function wordFor(dt){ return W.length?W[((dayIndex(dt)%W.length)+W.length)%W.length]:null; }
+  function set(id,v){var el=document.getElementById(id);if(el&&v)el.textContent=v}
+
+  var back=document.getElementById('pw-back');
+  function show(dt,isToday){
+    var v=wordFor(dt);if(!v)return;
+    set('pw-today',(isToday?'Today \u00B7 ':'')+fmt(dt,{month:'long',day:'numeric'}));
+    set('pw-word',v.word);
+    set('pw-scripture','\u201C'+v.scripture+'\u201D');
+    set('pw-sref',v.ref+' \u00B7 WEB');
+    set('pw-prayer',v.prayer);
+    set('pw-carry',v.carry);
+    if(back)back.style.display=isToday?'none':'inline-block';
+  }
+  show(today,true);
+  if(back)back.addEventListener('click',function(){show(today,true)});
+
+  var prev=[];
+  for(var i=1;i<=6;i++){var x=new Date(today);x.setUTCDate(x.getUTCDate()-i);prev.push(x)}
+  var wr=document.getElementById('pw-week-range');
+  if(wr){
+    var a=prev[5],b=prev[0],same=a.getUTCMonth()===b.getUTCMonth();
+    wr.textContent=fmt(a,{month:'long',day:'numeric'})+' \u2013 '+fmt(b,same?{day:'numeric'}:{month:'long',day:'numeric'});
+  }
+  Array.prototype.forEach.call(document.querySelectorAll('#pw-week .pw-wd'),function(el,i){
+    var dt=prev[i];if(!dt)return;
+    el.textContent=fmt(dt,{month:'long',day:'numeric'});
+    var host=el.parentNode,v=wordFor(dt);if(!v)return;
+    var tx=host.querySelector('.pw-text'),rf=host.querySelector('.pw-ref');
+    if(tx)tx.textContent=v.summary||firstSentence(v.word);
+    if(rf)rf.textContent=v.ref+' \u00B7 WEB';
+    host.style.display='flex';
+    host.style.flexDirection='column';
+    var rfEl=host.querySelector('.pw-ref');
+    if(rfEl)rfEl.style.marginBottom='auto';
+    var b=document.createElement('button');
+    b.type='button';
+    b.innerHTML='View <span style="font-size:15px">\u2192</span>';
+    b.setAttribute('style','width:100%;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:7px;background:#41A5EE;color:#fff;border:none;font:inherit;font-weight:700;font-size:14px;padding:9px 16px;border-radius:10px;cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,.22)');
+    b.addEventListener('click',function(){
+      show(dt,false);
+      var card=document.getElementById('pw-card');
+      if(card)window.scrollTo({top:Math.max(0,card.getBoundingClientRect().top+window.pageYOffset-90),behavior:'smooth'});
+    });
+    host.appendChild(b);
+  });
+})();
+</script>
 </body></html>
