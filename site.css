@@ -8,7 +8,7 @@
   .tsbrand-dot{flex:none;width:26px;height:26px;border-radius:50%;background:#41A5EE}
   .tsnavlinks{display:flex;align-items:center;gap:8px;font-size:15.5px;font-weight:600}
   .tslink{padding:9px 15px;border-radius:10px;cursor:pointer;color:#5a4f49;white-space:nowrap}
-  .tslink:hover{background:rgba(43,35,32,.07);color:#2B2320}
+  .tslink:hover{background:rgba(24,90,189,.1)!important;background-image:none!important;color:#000!important}
   .tsnav-ts{position:relative}
   .tsnav-db{position:relative}
   .dbbtn{border:none;background:none;font:inherit;font-size:inherit;font-weight:600;display:flex;align-items:center;gap:6px}
@@ -36,7 +36,7 @@
   .tscolh{font-size:12.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#185ABD;margin-bottom:7px;padding-left:8px}
   .tsitem{display:flex;align-items:center;gap:10px;padding:8px;border:none;background:none;font:inherit;font-size:16.5px;font-weight:500;color:#3a322d;border-radius:9px;cursor:pointer;text-align:left;width:100%;box-sizing:border-box}
   .tslbl{white-space:nowrap}
-  .tsitem:hover{background:rgba(232,97,60,.1);color:#000}
+  .tsitem:hover{background:rgba(24,90,189,.1)!important;background-image:none!important;color:#000!important}
   .tssw{width:16px;height:16px;border-radius:5px;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)}
   .cartpill{white-space:nowrap;padding:9px 15px;border:1.5px solid #1A1917;border-radius:10px;font-size:14.5px;font-weight:600;cursor:pointer}
   .tshamburger{display:none;flex:none;width:40px;height:40px;align-items:center;justify-content:center;border:none;background:none;cursor:pointer;padding:0}
@@ -87,9 +87,11 @@
   .tsnav button,.tsnav .tsbtn,.tsnav .cartpill,.tsmenu button,.tsmenu a,.dbmenu a,.dbmenu button{box-shadow:none!important}
   button,.home-cta,a.plain[style*="border-radius:1"],a.plain[style*="border-radius: 1"]{background-image:linear-gradient(165deg,rgba(88,140,232,.12) 0%,rgba(88,140,232,.035) 55%,rgba(24,90,189,.09) 100%)!important}
   .tsmenu a,.dbmenu a,.dbmenu button,.dbbtn,.tshamburger,.tsmenu button,.tee-grid a.plain[style]{background-image:none!important}
-  .tsbtn{background-image:linear-gradient(160deg,#33333A 0%,#1A1B22 55%,#0B0D14 100%)!important;background-color:#14151b!important}
+  .tsbtn{background-image:none!important;background-color:transparent!important;background:none!important;color:#5a4f49!important;box-shadow:none!important;border-radius:10px!important}
+  .tsbtn:hover{background:rgba(24,90,189,.1)!important;background-image:none!important;color:#000!important}
+  .dbbtn:hover,.dbmenu a:hover,.tsmenu a:hover,.cartpill:hover{background:rgba(24,90,189,.1)!important;background-image:none!important;color:#000!important}
   a.plain[style*="background:#41A5EE"],a.plain[style*="background: #41A5EE"],a.plain[style*="background-color:#41A5EE"],a.plain[style*="background:#41a5ee"],button[style*="background:#41A5EE"],button[style*="background: #41A5EE"],button[style*="background-color:#41A5EE"],button[style*="background:#41a5ee"],a.home-cta,.cat-chip[data-on="1"],.res-chip[data-on="1"],button[data-on="1"]{background-image:linear-gradient(165deg,#41A5EE 0%,#41A5EE 30%,#2B7CD3 68%,#185ABD 100%)!important;background-color:#2B7CD3!important;border-color:#185ABD!important}
-  .cartpill{background-image:linear-gradient(165deg,rgba(88,140,232,.20) 0%,rgba(88,140,232,.06) 55%,rgba(24,90,189,.16) 100%)!important}
+  .cartpill{background-image:linear-gradient(165deg,rgba(88,140,232,.05) 0%,rgba(88,140,232,.015) 55%,rgba(24,90,189,.04) 100%)!important}
   .af-grid > div,.res-grid > a.plain[style*="border-radius:16px"],.dv-slider > div[style*="border-radius:18px"],.tm-track > div > div[style*="border-radius:18px"]{box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);border:1px solid #fff;background-image:linear-gradient(165deg,rgba(255,255,255,.14) 0%,rgba(255,255,255,.14) 33%,rgba(255,255,255,0) 62%,rgba(0,0,0,.10) 100%)!important}
   .tm-track > div > div[style*="border-radius:18px"]{box-shadow:none!important}
   .home-more > div{box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14)}

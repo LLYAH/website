@@ -3,6 +3,66 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/faith-clothing",
+      "destination": "/faith-based-clothing",
+      "permanent": true
+    },
+    {
+      "source": "/christian-golf-wear",
+      "destination": "/christian-golf-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/golf",
+      "destination": "/christian-golf-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/streetwear",
+      "destination": "/christian-streetwear",
+      "permanent": true
+    },
+    {
+      "source": "/womens-clothing",
+      "destination": "/womens-christian-clothing",
+      "permanent": true
+    },
+    {
+      "source": "/mens-clothing",
+      "destination": "/mens-christian-clothing",
+      "permanent": true
+    },
+    {
+      "source": "/christian-apparel",
+      "destination": "/christian-clothing-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/christian-clothing",
+      "destination": "/christian-clothing-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/apparel.html",
+      "destination": "/christian-clothing-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/apparel",
+      "destination": "/christian-clothing-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/clothing.html",
+      "destination": "/christian-clothing-apparel",
+      "permanent": true
+    },
+    {
+      "source": "/clothing",
+      "destination": "/christian-clothing-apparel",
+      "permanent": true
+    },
+    {
       "source": "/t-shirts",
       "destination": "/christian-t-shirts",
       "permanent": true

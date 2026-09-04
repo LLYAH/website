@@ -23,74 +23,248 @@
   </div>
 
   <div class="dv-pane" data-pane="daily" style="max-width:1080px;margin:0 auto;padding:30px 24px 0">
-    <div class="bv-look" style="border-radius:18px;padding:34px 36px;margin-bottom:22px">
-      <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:12px">Today · Day 237</div>
-      <h2 style="font-family:'Libre Caslon Display',serif;font-size:32px;letter-spacing:-.7px;margin:0 0 14px">The Quiet Obedience</h2>
-      <p style="font-size:17px;line-height:1.65;color:#3a322d;margin:0 0 16px;max-width:720px;text-wrap:pretty">Most obedience is unremarkable. It looks like showing up for the same job, forgiving the same person, and praying the same prayer without an audience. Naaman wanted a miracle worth telling; he was given a river and a count of seven. The healing waited on the seventh dip, not the first.</p>
-      <p style="font-size:17px;line-height:1.65;color:#3a322d;margin:0 0 20px;max-width:720px;text-wrap:pretty">Ask yourself where you are stopping at six. The instruction has not changed and neither has the promise attached to it.</p>
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,.1)" class="dv-grid">
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Reading</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">2 Kings 5:1–14 · ASV</p></div>
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Verse</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">"Go and wash in Jordan seven times, and thy flesh shall come again to thee."</p></div>
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Practice</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">Do the small thing you already know to do, today, without telling anyone.</p></div>
+    <div class="bv-look" id="dv-card-daily" style="border-radius:18px;padding:36px 38px;margin-bottom:22px">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:baseline;margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD" data-role="date">Today</div>
+          <button type="button" data-role="back" style="display:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff;font:inherit;font-weight:700;font-size:12px;padding:6px 12px;border-radius:99px;cursor:pointer">Today’s reading</button>
+        </div>
+        <div style="display:flex;align-items:center"><svg viewBox="0 0 38 24" width="34" height="22" fill="none" stroke="#fff" stroke-width="1.6" style="opacity:.9;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))"><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z"></path><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z" transform="translate(14 0)"></path></svg></div>
       </div>
+      <h2 data-role="title" style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:30px;line-height:1.35;letter-spacing:-.6px;margin:0 0 14px;max-width:760px;text-wrap:pretty">The Quiet Obedience</h2>
+      <div data-role="body" style="max-width:760px"></div>
+      <div style="height:1px;background:rgba(0,0,0,.1);margin:0 0 22px"></div>
+      <div data-role="cols" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px" class="dv-grid"></div>
     </div>
     <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-bottom:16px">
-      <h3 style="font-size:22px;font-weight:800;letter-spacing:-.7px;margin:0">Earlier this week</h3>
-      <span style="font-size:13px;color:#8a7a6a">A new reading every morning</span>
+      <h3 style="font-size:24px;font-weight:800;letter-spacing:-.8px;margin:0">Earlier this week</h3>
+      <span style="font-size:13px;color:#8a7a6a" data-role="range"></span>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-bottom:10px" class="dv-grid">
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">Day 236</div><b style="font-size:18px;font-weight:800;letter-spacing:-.4px">When the Bread Is Enough</b><p style="font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 0">Five loaves, a crowd, and a boy who handed over lunch. Matthew 14:13–21</p></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">Day 235</div><b style="font-size:18px;font-weight:800;letter-spacing:-.4px">Praying Through the Night</b><p style="font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 0">Jacob would not let go until the blessing came. Genesis 32:22–32</p></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">Day 234</div><b style="font-size:18px;font-weight:800;letter-spacing:-.4px">The Cost of a Good Yes</b><p style="font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 0">Ruth chose a hard road and found a redeemer on it. Ruth 1:8–18</p></div>
-    </div>
+    <div class="dv-archive" data-group="daily" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-bottom:10px"></div>
   </div>
 
   <div class="dv-pane" data-pane="weekly" style="max-width:1080px;margin:0 auto;padding:30px 24px 0;display:none">
-    <div class="bv-look" style="border-radius:18px;padding:34px 36px;margin-bottom:22px">
-      <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:12px">This week · Week 34</div>
-      <h2 style="font-family:'Libre Caslon Display',serif;font-size:32px;letter-spacing:-.7px;margin:0 0 14px">Rest Is Not a Reward</h2>
-      <p style="font-size:17px;line-height:1.65;color:#3a322d;margin:0 0 20px;max-width:720px;text-wrap:pretty">Sabbath came before the work was finished, not after. God gave a day off to people who had just been freed from making bricks, and He gave it as a boundary, not a bonus. This week's reading traces rest from Genesis to the Gospels and asks a plain question: what would change if you stopped earning your rest?</p>
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;padding-top:20px;border-top:1px solid rgba(0,0,0,.1)" class="dv-grid">
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Readings</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">Genesis 2:1–3 · Exodus 20:8–11 · Mark 2:23–28</p></div>
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Verse</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">"The sabbath was made for man, and not man for the sabbath."</p></div>
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Group questions</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">Four discussion prompts for small groups, plus one for families with kids.</p></div>
+    <div class="bv-look" id="dv-card-weekly" style="border-radius:18px;padding:36px 38px;margin-bottom:22px">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:baseline;margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD" data-role="date">This week</div>
+          <button type="button" data-role="back" style="display:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff;font:inherit;font-weight:700;font-size:12px;padding:6px 12px;border-radius:99px;cursor:pointer">This week</button>
+        </div>
+        <div style="display:flex;align-items:center"><svg viewBox="0 0 38 24" width="34" height="22" fill="none" stroke="#fff" stroke-width="1.6" style="opacity:.9;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))"><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z"></path><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z" transform="translate(14 0)"></path></svg></div>
       </div>
+      <h2 data-role="title" style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:30px;line-height:1.35;letter-spacing:-.6px;margin:0 0 14px;max-width:760px;text-wrap:pretty">Rest Is Not a Reward</h2>
+      <div data-role="body" style="max-width:760px"></div>
+      <div style="height:1px;background:rgba(0,0,0,.1);margin:0 0 22px"></div>
+      <div data-role="cols" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px" class="dv-grid"></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-bottom:10px" class="dv-grid">
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">Week 33</div><b style="font-size:18px;font-weight:800;letter-spacing:-.4px">Honest Prayer</b><p style="font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 0">The Psalms complain, and God kept them anyway.</p></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">Week 32</div><b style="font-size:18px;font-weight:800;letter-spacing:-.4px">The Table You Set</b><p style="font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 0">Hospitality as the first ministry of a household.</p></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">Week 31</div><b style="font-size:18px;font-weight:800;letter-spacing:-.4px">Slow to Anger</b><p style="font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 0">What patience costs and what it protects.</p></div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-bottom:16px">
+      <h3 style="font-size:24px;font-weight:800;letter-spacing:-.8px;margin:0">Previous weeks</h3>
+      <span style="font-size:13px;color:#8a7a6a" data-role="range"></span>
     </div>
+    <div class="dv-archive" data-group="weekly" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-bottom:10px"></div>
   </div>
 
   <div class="dv-pane" data-pane="monthly" style="max-width:1080px;margin:0 auto;padding:30px 24px 0;display:none">
-    <div class="bv-look" style="border-radius:18px;padding:34px 36px;margin-bottom:22px">
-      <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:12px">August</div>
-      <h2 style="font-family:'Libre Caslon Display',serif;font-size:32px;letter-spacing:-.7px;margin:0 0 14px">A Month in the Fruit of the Spirit</h2>
-      <p style="font-size:17px;line-height:1.65;color:#3a322d;margin:0 0 20px;max-width:720px;text-wrap:pretty">Nine traits, thirty-one days. Each week takes two or three of them, with a passage to read, a habit to try, and one honest question to answer at the end of the week. Written for anyone who has read Galatians 5 and wondered how the list becomes a life.</p>
-      <div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;padding-top:20px;border-top:1px solid rgba(0,0,0,.1)" class="dv-grid">
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Week 1</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">Love, joy, peace</p></div>
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Week 2</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">Longsuffering, kindness</p></div>
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Week 3</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">Goodness, faithfulness</p></div>
-        <div><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px">Week 4</div><p style="font-size:15px;line-height:1.6;margin:0;color:#3a322d">Meekness, self-control</p></div>
+    <div class="bv-look" id="dv-card-monthly" style="border-radius:18px;padding:36px 38px;margin-bottom:22px">
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:baseline;margin-bottom:18px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD" data-role="date">This month</div>
+          <button type="button" data-role="back" style="display:none;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff;font:inherit;font-weight:700;font-size:12px;padding:6px 12px;border-radius:99px;cursor:pointer">This month</button>
+        </div>
+        <div style="display:flex;align-items:center"><svg viewBox="0 0 38 24" width="34" height="22" fill="none" stroke="#fff" stroke-width="1.6" style="opacity:.9;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))"><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z"></path><path d="M12 20.5s-6.9-4.2-8.6-8.3C2 9.1 3.7 6.3 6.5 5.9c1.9-.3 3.5.7 4.4 2.1h2.2c.9-1.4 2.5-2.4 4.4-2.1 2.8.4 4.5 3.2 3.1 6.3-1.7 4.1-8.6 8.3-8.6 8.3z" transform="translate(14 0)"></path></svg></div>
       </div>
+      <h2 data-role="title" style="font-family:'Hanken Grotesk',sans-serif;font-weight:800;font-size:30px;line-height:1.35;letter-spacing:-.6px;margin:0 0 14px;max-width:760px;text-wrap:pretty">A Month in the Fruit of the Spirit</h2>
+      <div data-role="body" style="max-width:760px"></div>
+      <div style="height:1px;background:rgba(0,0,0,.1);margin:0 0 22px"></div>
+      <div data-role="cols" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px" class="dv-grid"></div>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-bottom:10px" class="dv-grid">
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">July</div><b style="font-size:18px;font-weight:800;letter-spacing:-.4px">The Psalms of Ascent</b><p style="font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 0">Fifteen songs for people on the way up.</p></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">June</div><b style="font-size:18px;font-weight:800;letter-spacing:-.4px">Sermon on the Mount</b><p style="font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 0">Four weeks in Matthew 5 through 7.</p></div>
-      <div style="background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:14px;padding:22px"><div style="font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px">May</div><b style="font-size:18px;font-weight:800;letter-spacing:-.4px">Names of God</b><p style="font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 0">One name a day, from Genesis to Revelation.</p></div>
+    <div style="display:flex;flex-wrap:wrap;gap:12px;align-items:baseline;justify-content:space-between;margin-bottom:16px">
+      <h3 style="font-size:24px;font-weight:800;letter-spacing:-.8px;margin:0">Previous months</h3>
+      <span style="font-size:13px;color:#8a7a6a" data-role="range"></span>
     </div>
+    <div class="dv-archive" data-group="monthly" style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;padding-bottom:10px"></div>
   </div>
 
-  <div style="max-width:1080px;margin:0 auto;padding:44px 24px 70px">
+  <div style="max-width:1080px;margin:0 auto;padding:44px 24px 0">
     <div style="background:linear-gradient(135deg,#FFFFFF 0%,#FFFFFF 33%,#F7F4EF 66%,#EFEBE4 100%);color:#1A1917;border:1px solid rgba(43,35,32,.1);box-shadow:0 18px 40px rgba(43,35,32,.10);border-radius:18px;padding:32px 34px;display:flex;flex-wrap:wrap;align-items:center;gap:20px;justify-content:space-between">
       <div style="max-width:520px"><div style="font-size:11px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:8px">Read along</div><p style="font-size:19px;line-height:1.5;margin:0;letter-spacing:-.3px">Devotionals are free, and always will be. Print them for your group.</p></div>
       <div style="display:flex;flex-wrap:wrap;gap:10px"><a class="plain" href="scripture-resources.html" style="background:#41A5EE;color:#fff;font-weight:700;font-size:15px;padding:13px 22px;border-radius:12px">Free scripture packs</a><a class="plain" href="affirmations.html" style="background:transparent;color:#1A1917;border:1px solid rgba(43,35,32,.22);font-weight:700;font-size:15px;padding:13px 22px;border-radius:12px">Daily affirmations</a></div>
     </div>
   </div>
 
+  <div style="max-width:1080px;margin:0 auto;padding:0 24px 56px"><p style="font-size:12.5px;line-height:1.6;color:#8a7a6a;margin:0;max-width:760px;margin-top:34px;padding-top:18px;border-top:1px solid rgba(43,35,32,.1)">Scripture quotations are taken from the World English Bible (WEB), a public domain modern English translation of the Holy Bible. No permission is required for its use.</p></div>
+
 </div></div>
 <site-footer base=""></site-footer>
-<script src="site-chrome.js"></script>
+<script src="site-chrome.js?v=2"></script>
 <script src="site.js"></script>
+<script>
+(function(){
+  var DATA={
+    daily:[
+      {title:"The Quiet Obedience",
+       body:["Most obedience is unremarkable. It looks like showing up for the same job, forgiving the same person, and praying the same prayer without an audience. Naaman wanted a miracle worth telling; he was given a river and a count of seven. The healing waited on the seventh dip, not the first.",
+             "Ask yourself where you are stopping at six. The instruction has not changed and neither has the promise attached to it."],
+       summary:"Naaman wanted a miracle worth telling and was given a river and a count of seven. 2 Kings 5:1\u201314",
+       cols:[["Reading","2 Kings 5:1\u201314 \u00B7 WEB"],
+             ["Verse","\u201CGo and wash in the Jordan seven times, and your flesh shall come again to you, and you shall be clean.\u201D"],
+             ["Practice","Do the small thing you already know to do, today, without telling anyone."]]},
+      {title:"When the Bread Is Enough",
+       body:["Five loaves, a crowd, and a boy who handed over lunch. Jesus did not ask for more than what was already in someone's hands, and what came back was more than the crowd could eat.",
+             "Bring the small portion you have been embarrassed to offer. He is not waiting on your abundance."],
+       summary:"Five loaves, a crowd, and a boy who handed over lunch. Matthew 14:13\u201321",
+       cols:[["Reading","Matthew 14:13\u201321 \u00B7 WEB"],
+             ["Verse","\u201CThey all ate and were filled. They took up twelve baskets full of that which remained left over.\u201D"],
+             ["Practice","Give one thing away today that you were saving for a better moment."]]},
+      {title:"Praying Through the Night",
+       body:["Jacob would not let go until the blessing came. He wrestled until daybreak, walked away with a limp, and left with a new name.",
+             "Some answers come to the ones who stay in the room. Keep asking."],
+       summary:"Jacob would not let go until the blessing came. Genesis 32:22\u201332",
+       cols:[["Reading","Genesis 32:22\u201332 \u00B7 WEB"],
+             ["Verse","\u201CI won\u2019t let you go unless you bless me.\u201D"],
+             ["Practice","Take the prayer you have given up on and pray it once more tonight."]]},
+      {title:"The Cost of a Good Yes",
+       body:["Ruth chose a hard road and found a redeemer on it. She left what was familiar, took a widow's poverty as her own, and went to work in a field that was not hers.",
+             "A faithful yes usually costs something before it provides anything."],
+       summary:"Ruth chose a hard road and found a redeemer on it. Ruth 1:8\u201318",
+       cols:[["Reading","Ruth 1:8\u201318 \u00B7 WEB"],
+             ["Verse","\u201CWhere you go, I will go; and where you stay, I will stay.\u201D"],
+             ["Practice","Name the cost of the yes in front of you, then decide with your eyes open."]]}
+    ],
+    weekly:[
+      {title:"Rest Is Not a Reward",
+       body:["Sabbath came before the work was finished, not after. God gave a day off to people who had just been freed from making bricks, and He gave it as a boundary, not a bonus. This week's reading traces rest from Genesis to the Gospels and asks a plain question: what would change if you stopped earning your rest?"],
+       summary:"Sabbath came before the work was finished, not after.",
+       cols:[["Readings","Genesis 2:1\u20133 \u00B7 Exodus 20:8\u201311 \u00B7 Mark 2:23\u201328 \u00B7 WEB"],
+             ["Verse","\u201CThe Sabbath was made for man, not man for the Sabbath.\u201D"],
+             ["Group questions","Four discussion prompts for small groups, plus one for families with kids."]]},
+      {title:"Honest Prayer",
+       body:["The Psalms complain, and God kept them anyway. A third of the songbook is grief, confusion, or protest, and none of it was edited out. Prayer that hides its real feeling is not more spiritual, only quieter."],
+       summary:"The Psalms complain, and God kept them anyway.",
+       cols:[["Readings","Psalm 13 \u00B7 Psalm 42 \u00B7 Psalm 88 \u00B7 WEB"],
+             ["Verse","\u201CHow long, Yahweh? Will you forget me forever?\u201D"],
+             ["Group questions","Three prompts on lament, plus one written prayer to pray together."]]},
+      {title:"The Table You Set",
+       body:["Hospitality as the first ministry of a household. Before programs and platforms, the church ate in homes. A set table is still one of the plainest ways to love a stranger."],
+       summary:"Hospitality as the first ministry of a household.",
+       cols:[["Readings","Luke 10:38\u201342 \u00B7 Romans 12:9\u201313 \u00B7 Hebrews 13:1\u20132 \u00B7 WEB"],
+             ["Verse","\u201CDon\u2019t forget to show hospitality to strangers.\u201D"],
+             ["Group questions","Four prompts on welcome, plus one plan to invite someone this week."]]},
+      {title:"Slow to Anger",
+       body:["What patience costs and what it protects. Anger is not always sin, but it is always expensive, and it usually spends someone else's peace. This week looks at the pause between provocation and response."],
+       summary:"What patience costs and what it protects.",
+       cols:[["Readings","Proverbs 15:1 \u00B7 Ephesians 4:26\u201332 \u00B7 James 1:19\u201320 \u00B7 WEB"],
+             ["Verse","\u201CLet every man be swift to hear, slow to speak, and slow to anger.\u201D"],
+             ["Group questions","Three prompts on conflict, plus one apology to make before Sunday."]]}
+    ],
+    monthly:[
+      {title:"A Month in the Fruit of the Spirit",
+       body:["Nine traits, thirty-one days. Each week takes two or three of them, with a passage to read, a habit to try, and one honest question to answer at the end of the week. Written for anyone who has read Galatians 5 and wondered how the list becomes a life."],
+       summary:"Nine traits, thirty-one days, from Galatians 5.",
+       cols:[["Week 1","Love, joy, peace"],["Week 2","Longsuffering, kindness"],["Week 3","Goodness, faithfulness"],["Week 4","Meekness, self-control"]]},
+      {title:"The Psalms of Ascent",
+       body:["Fifteen songs for people on the way up. Pilgrims sang these walking to Jerusalem, and they read like a travel journal: homesick, tired, watchful, glad. One psalm a day with a short note, four weeks of climbing."],
+       summary:"Fifteen songs for people on the way up.",
+       cols:[["Week 1","Psalms 120\u2013123"],["Week 2","Psalms 124\u2013127"],["Week 3","Psalms 128\u2013131"],["Week 4","Psalms 132\u2013134"]]},
+      {title:"Sermon on the Mount",
+       body:["Four weeks in Matthew 5 through 7. The longest recorded teaching of Jesus, read slowly, in order, without skipping the hard parts. Each week ends with one instruction to actually practice."],
+       summary:"Four weeks in Matthew 5 through 7.",
+       cols:[["Week 1","Matthew 5:1\u201320"],["Week 2","Matthew 5:21\u201348"],["Week 3","Matthew 6"],["Week 4","Matthew 7"]]},
+      {title:"Names of God",
+       body:["One name a day, from Genesis to Revelation. Every name is a promise someone needed first, given in a specific place at a specific hour. Read the story, then the name, then pray it back."],
+       summary:"One name a day, from Genesis to Revelation.",
+       cols:[["Week 1","El Shaddai, Yahweh Yireh"],["Week 2","Yahweh Rapha, Yahweh Nissi"],["Week 3","Yahweh Shalom, Yahweh Raah"],["Week 4","Yahweh Tsidkenu, Yahweh Shammah"]]}
+    ]
+  };
+
+  var TZ='America/Chicago';
+  function ctNow(){
+    var o={};new Intl.DateTimeFormat('en-US',{timeZone:TZ,year:'numeric',month:'numeric',day:'numeric'})
+      .formatToParts(new Date()).forEach(function(x){o[x.type]=x.value});
+    return new Date(Date.UTC(+o.year,+o.month-1,+o.day));
+  }
+  function fmt(dt,opt){opt.timeZone='UTC';return new Intl.DateTimeFormat('en-US',opt).format(dt)}
+  var today=ctNow();
+
+  function dayBack(n){var x=new Date(today);x.setUTCDate(x.getUTCDate()-n);return x}
+  function weekStart(n){var x=new Date(today);x.setUTCDate(x.getUTCDate()-x.getUTCDay()-7*n);return x}
+  function labels(group,i){
+    if(group==='daily')return fmt(dayBack(i),{month:'long',day:'numeric',year:'numeric'});
+    if(group==='weekly'){
+      var s=weekStart(i),e=new Date(s);e.setUTCDate(e.getUTCDate()+6);
+      var same=s.getUTCMonth()===e.getUTCMonth();
+      if(same)return fmt(s,{month:'long',day:'numeric'})+' \u2013 '+fmt(e,{day:'numeric'})+', '+fmt(e,{year:'numeric'});
+      return fmt(s,{month:'long',day:'numeric'})+' \u2013 '+fmt(e,{month:'long',day:'numeric',year:'numeric'});
+    }
+    return fmt(new Date(Date.UTC(today.getUTCFullYear(),today.getUTCMonth()-i,1)),{month:'long',year:'numeric'});
+  }
+  var PREFIX={daily:'Today \u00B7 ',weekly:'This week \u00B7 ',monthly:'This month \u00B7 '};
+
+  function show(group,i){
+    var card=document.getElementById('dv-card-'+group),d=DATA[group][i];
+    if(!card||!d)return;
+    card.querySelector('[data-role="date"]').textContent=(i===0?PREFIX[group]:'')+labels(group,i);
+    card.querySelector('[data-role="title"]').textContent=d.title;
+    var body=card.querySelector('[data-role="body"]');
+    body.innerHTML='';
+    d.body.forEach(function(t){
+      var p=document.createElement('p');
+      p.setAttribute('style','font-size:17px;line-height:1.6;color:#3a322d;margin:0 0 22px;text-wrap:pretty');
+      p.textContent=t;body.appendChild(p);
+    });
+    var cols=card.querySelector('[data-role="cols"]');
+    cols.innerHTML='';
+    d.cols.forEach(function(c){
+      var w=document.createElement('div');
+      var h=document.createElement('div');
+      h.setAttribute('style','font-size:14px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#8a7a6a;margin-bottom:8px');
+      h.textContent=c[0];
+      var p=document.createElement('p');
+      p.setAttribute('style','font-size:17px;line-height:1.6;color:#3a322d;margin:0');
+      p.textContent=c[1];
+      w.appendChild(h);w.appendChild(p);cols.appendChild(w);
+    });
+    var back=card.querySelector('[data-role="back"]');
+    if(back)back.style.display=i===0?'none':'inline-block';
+  }
+
+  ['daily','weekly','monthly'].forEach(function(group){
+    show(group,0);
+    var card=document.getElementById('dv-card-'+group),back=card&&card.querySelector('[data-role="back"]');
+    if(back)back.addEventListener('click',function(){show(group,0)});
+
+    var pane=document.querySelector('.dv-pane[data-pane="'+group+'"]');
+    var range=pane&&pane.querySelector('[data-role="range"]');
+    if(range)range.textContent=group==='daily'?'A new reading every morning':(group==='weekly'?'A new study every Sunday':'A new study on the first of the month');
+
+    var wrap=document.querySelector('.dv-archive[data-group="'+group+'"]');
+    if(!wrap)return;
+    DATA[group].slice(1).forEach(function(d,n){
+      var i=n+1;
+      var el=document.createElement('div');
+      el.setAttribute('style','background:#fff;border:1px solid rgba(43,35,32,.1);border-radius:14px;padding:22px;box-shadow:0 4px 11px rgba(26,25,23,.17),0 1px 3px rgba(0,0,0,.14);display:flex;flex-direction:column');
+      var dt=document.createElement('div');
+      dt.setAttribute('style','font-size:12px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;color:#185ABD;margin-bottom:10px');
+      dt.textContent=labels(group,i);
+      var tl=document.createElement('b');
+      tl.setAttribute('style','font-size:18px;font-weight:800;letter-spacing:-.4px;color:#1A1917');
+      tl.textContent=d.title;
+      var sm=document.createElement('p');
+      sm.setAttribute('style','font-size:15px;line-height:1.55;color:#5a4f49;margin:10px 0 auto');
+      sm.textContent=d.summary;
+      var b=document.createElement('button');
+      b.type='button';
+      b.innerHTML='View <span style="font-size:15px">\u2192</span>';
+      b.setAttribute('style','width:100%;margin-top:16px;display:flex;align-items:center;justify-content:center;gap:7px;background:#41A5EE;color:#fff;border:none;font:inherit;font-weight:700;font-size:14px;padding:9px 16px;border-radius:10px;cursor:pointer;box-shadow:0 2px 5px rgba(0,0,0,.22)');
+      b.addEventListener('click',function(){
+        show(group,i);
+        var card=document.getElementById('dv-card-'+group);
+        if(card)window.scrollTo({top:Math.max(0,card.getBoundingClientRect().top+window.pageYOffset-90),behavior:'smooth'});
+      });
+      el.appendChild(dt);el.appendChild(tl);el.appendChild(sm);el.appendChild(b);
+      wrap.appendChild(el);
+    });
+  });
+})();
+</script>
 </body></html>

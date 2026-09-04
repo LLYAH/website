@@ -2,6 +2,7 @@
    Usage: <site-nav base="./"></site-nav>  /  <site-footer base="../"></site-footer> */
 (function () {
   const CATS = [
+    ["clothing-apparel", "Clothing &amp; Apparel"],
     ["t-shirts", "T-Shirts"],
     ["hoodies", "Hoodies &amp; Sweatshirts"],
     ["jewelry", "Jewelry"],
@@ -65,6 +66,9 @@
         '<a class="plain" href="' + base + "christian-" + slug + '.html">' + label + "</a>"
       ).join("") +
         '<a class="plain" href="' + base + 'christian-merch.html" style="font-weight:800">All Merch</a>';
+      const mobileClothing = [["Men&#39;s Clothing","mens-christian-clothing"],["Women&#39;s Clothing","womens-christian-clothing"],["Streetwear","christian-streetwear"],["Golf Wear","christian-golf-apparel"],["T-Shirts","christian-t-shirts"],["Hoodies &amp; Sweatshirts","christian-hoodies"],["Hats &amp; Headwear","christian-hats"],["Graphic Tees","christian-t-shirts/faith-over-fear"],["Funny Tees","christian-t-shirts/love-shirt"],["Faith","faith-based-clothing"]].map(function (c) {
+        return '<a class="plain" href="' + base + c[1] + '.html">' + c[0] + '</a>';
+      }).join("");
       this.innerHTML =
         '<nav class="tsnav">' +
           '<a class="tsbrand plain" href="' + base + 'index.html"><span class="tsbrand-dot"></span>Love &amp; Love YAH</a>' +
@@ -74,8 +78,21 @@
               '<button class="tsbtn" type="button">Shop <span class="car">▼</span></button>' +
               '<div class="tsmenu">' +
                 '<div class="megacats"><div class="tscolh" style="padding-left:10px">Shop by category</div>' + rail + "</div>" +
-                '<div class="megacols megasubs" data-for="tshirts"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">T-Shirts — shop by theme</div>' + themeItems(base, "t-shirts") + '<a class="tsitem plain" href="' + base + 'christian-t-shirts.html"><span class="tslbl" style="font-weight:700">All T-Shirts →</span></a></div>' +
-                '<div class="megacols megasubs" data-for="hoodies"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">Hoodies &amp; Sweatshirts — shop by theme</div>' + themeItems(base, "hoodies") + '<a class="tsitem plain" href="' + base + 'christian-hoodies.html"><span class="tslbl" style="font-weight:700">All Hoodies &amp; Sweatshirts →</span></a></div>' +
+                '<div class="megacols megasubs" data-for="clothing-apparel"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">Clothing &amp; Apparel — shop by collection</div>' +
+                  '<a class="tsitem plain" href="' + base + 'mens-christian-clothing.html"><span class="tslbl">Men&#39;s Clothing</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'womens-christian-clothing.html"><span class="tslbl">Women&#39;s Clothing</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'christian-streetwear.html"><span class="tslbl">Streetwear</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'christian-golf-apparel.html"><span class="tslbl">Golf Wear</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'christian-t-shirts.html"><span class="tslbl">T-Shirts</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'christian-hoodies.html"><span class="tslbl">Hoodies &amp; Sweatshirts</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'christian-hats.html"><span class="tslbl">Hats &amp; Headwear</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'christian-t-shirts/faith-over-fear.html"><span class="tslbl">Graphic Tees</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'christian-t-shirts/love-shirt.html"><span class="tslbl">Funny Tees</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'faith-based-clothing.html"><span class="tslbl">Faith</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'christian-clothing-apparel.html"><span class="tslbl" style="font-weight:700">All Clothing &amp; Apparel →</span></a>' +
+                "</div>" +
+                '<div class="megacols megasubs" data-for="tshirts" style="display:none"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">T-Shirts — shop by theme</div>' + themeItems(base, "t-shirts") + '<a class="tsitem plain" href="' + base + 'christian-t-shirts.html"><span class="tslbl" style="font-weight:700">All T-Shirts →</span></a></div>' +
+                '<div class="megacols megasubs" data-for="hoodies" style="display:none"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">Hoodies &amp; Sweatshirts — shop by theme</div>' + themeItems(base, "hoodies") + '<a class="tsitem plain" href="' + base + 'christian-hoodies.html"><span class="tslbl" style="font-weight:700">All Hoodies &amp; Sweatshirts →</span></a></div>' +
                 Object.keys(SUBS).map(function (slug) {
                   const label = (CATS.find((c) => c[0] === slug) || [slug, slug])[1];
                   return '<div class="megacols megasubs" data-for="' + slug + '" style="display:none"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">' + label + ' — shop by type</div>' +
@@ -90,9 +107,15 @@
                 '<a class="tsitem plain" href="' + base + 'daily-verse.html"><span class="tslbl">Daily Verse</span></a>' +
                 '<a class="tsitem plain" href="' + base + 'prophetic-word.html"><span class="tslbl">Daily Prophetic Word</span></a>' +
                 '<a class="tsitem plain" href="' + base + 'devotional.html"><span class="tslbl">Daily Devotional</span></a>' +
-                '<a class="tsitem plain" href="' + base + 'affirmations.html"><span class="tslbl">Affirmations</span></a>' +
-                '<a class="tsitem plain" href="' + base + 'warfare.html"><span class="tslbl">Spiritual Warfare Prayers</span></a>' +
+                '<a class="tsitem plain" href="' + base + 'affirmations.html"><span class="tslbl">Daily Affirmations</span></a>' +
+                '<a class="tsitem plain" href="' + base + 'warfare.html"><span class="tslbl">Daily Warfare Prayers</span></a>' +
                 '<a class="tsitem plain" href="' + base + 'testimonies.html"><span class="tslbl">Testimonies</span></a>' +
+              "</div>" +
+            "</div>" +
+            '<div class="tsnav-db">' +
+              '<button class="dbbtn tslink" type="button">Worship <span class="car">▾</span></button>' +
+              '<div class="dbmenu">' +
+                '<a class="tsitem plain" href="' + base + 'radio.html"><span class="tslbl">Worship Music</span></a>' +
               "</div>" +
             "</div>" +
             '<div class="tsnav-db">' +
@@ -102,8 +125,8 @@
                 '<a class="tsitem plain" href="' + base + 'inspirational-graphics.html"><span class="tslbl">Inspirational Social Media Posts</span></a>' +
               "</div>" +
             "</div>" +
-            '<a class="tslink plain" href="' + base + 'radio.html">Radio</a>' +
-            '<a class="tslink plain" href="' + base + 'prayer.html">Request Prayer</a>' +
+            '<a class="tslink plain" href="' + base + 'prayer.html">Prayer Request</a>' +
+            '<a class="tslink plain" href="' + base + 'about.html">About</a>' +
             '<a class="tslink plain" href="' + base + 'donate.html">Donate</a>' +
             '<a class="plain cartpill" href="' + base + 'cart.html">Cart (0)</a>' +
           "</div>" +
@@ -112,21 +135,24 @@
           '<div class="tsdrawer-overlay"></div>' +
           '<div class="tsdrawer-panel">' +
             '<div class="tsdrawer-head"><a class="tsbrand plain" href="' + base + 'index.html"><span class="tsbrand-dot"></span>Love &amp; Love YAH</a><button class="tsdrawer-close" type="button" aria-label="Close menu">&times;</button></div>' +
-            '<details class="tsacc"><summary>Shop</summary><div class="tsacc-body">' + mobileCats + "</div></details>" +
+            '<details class="tsacc"><summary>Shop</summary><div class="tsacc-body">' + '<a class="plain" href="' + base + 'christian-clothing-apparel.html" style="font-weight:800">Clothing &amp; Apparel</a>' + mobileClothing + mobileCats + "</div></details>" +
             '<details class="tsacc"><summary>Daily Bread</summary><div class="tsacc-body">' +
               '<a class="plain" href="' + base + 'daily-verse.html">Daily Verse</a>' +
               '<a class="plain" href="' + base + 'prophetic-word.html">Daily Prophetic Word</a>' +
               '<a class="plain" href="' + base + 'devotional.html">Daily Devotional</a>' +
-              '<a class="plain" href="' + base + 'affirmations.html">Affirmations</a>' +
-              '<a class="plain" href="' + base + 'warfare.html">Spiritual Warfare Prayers</a>' +
+              '<a class="plain" href="' + base + 'affirmations.html">Daily Affirmations</a>' +
+              '<a class="plain" href="' + base + 'warfare.html">Daily Warfare Prayers</a>' +
               '<a class="plain" href="' + base + 'testimonies.html">Testimonies</a>' +
+            "</div></details>" +
+            '<details class="tsacc"><summary>Worship</summary><div class="tsacc-body">' +
+              '<a class="plain" href="' + base + 'radio.html">Worship Music</a>' +
             "</div></details>" +
             '<details class="tsacc"><summary>Free Resources</summary><div class="tsacc-body">' +
               '<a class="plain" href="' + base + 'scripture-resources.html">Bible Verses For Social Media</a>' +
               '<a class="plain" href="' + base + 'inspirational-graphics.html">Inspirational Social Media Posts</a>' +
             "</div></details>" +
-            '<a class="tsdlink plain" href="' + base + 'radio.html">Radio</a>' +
-            '<a class="tsdlink plain" href="' + base + 'prayer.html">Request Prayer</a>' +
+            '<a class="tsdlink plain" href="' + base + 'prayer.html">Prayer Request</a>' +
+            '<a class="tsdlink plain" href="' + base + 'about.html">About</a>' +
             '<a class="tsdlink plain" href="' + base + 'donate.html">Donate</a>' +
             '<a class="tsdlink plain tsdcart-count" href="' + base + 'cart.html">Cart (0)</a>' +
           "</div>" +
@@ -166,7 +192,7 @@
         const ci = e.target.closest(".catitem");
         if (!ci) return;
         const cat = ci.dataset.cat;
-        const want = cat === "hoodies" ? "hoodies" : (SUBS[cat] ? cat : "tshirts");
+        const want = (cat === "hoodies" || cat === "clothing-apparel") ? cat : (SUBS[cat] ? cat : "tshirts");
         this.querySelectorAll(".catitem").forEach((a) => a.removeAttribute("data-on"));
         ci.setAttribute("data-on", "1");
         this.querySelectorAll(".megacols").forEach((p) => {
@@ -198,22 +224,22 @@
       this.innerHTML =
         '<footer style="background:linear-gradient(135deg,#2E7AC4 0%,#17538F 28%,#0C3268 62%,#071E42 100%);color:#EDEAE4;padding:54px 34px 28px;font-family:\'Hanken Grotesk\',sans-serif">' +
           '<div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">' +
-            '<div style="max-width:260px">' +
+            '<div style="max-width:350px">' +
               '<a class="plain" href="' + base + 'index.html" style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:50%;background:#41A5EE"></span><span style="font-weight:800;letter-spacing:-.4px;font-size:19px">Love &amp; Love YAH</span></a>' +
-              '<p style="color:#FFFFFF;font-size:14px;line-height:1.6;margin:14px 0 18px">We make faith wearable. Every shirt, mug and handmade piece carries the Word into everyday life &mdash; and 10% of every purchase is donated to a Christian ministry, mission, charity or non-profit. We also are grateful to provide resources to help you grow closer to The Lord (Yahushah Hamashiach / Jesus Christ) and support our brothers and sisters in prayer.</p>' +
+              '<p style="color:#FFFFFF;font-size:14px;line-height:1.6;margin:14px 0 18px">Love &amp; Love YAH is a Christ-centered ministry and shop. We make Holy Spirit inspired apparel and handmade goods that carries the Word into everyday life to help fulfill The Great Commission. 10% of every purchase is donated to a Christian ministry, mission, charity or non-profit. We also are grateful to provide FREE resources to help you grow closer to The Lord Jesus Christ (Yahushah Hamashiach). We give away everything we can for free, and we pray with anyone who asks &mdash; all to the Glory of God (Yahweh).</p>' +
               '<div style="display:flex;gap:10px">' + SOCIAL.map((s) => '<a href="#" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);color:#EDEAE4">' + s + "</a>").join("") + "</div>" +
             "</div>" +
-            '<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px 10px;flex:1;min-width:560px">' +
-              col("Clothing &amp; Accessories", [clink("christian-t-shirts.html","Shirts"), clink("christian-hoodies.html","Sweatshirts"), clink("christian-hats.html","Hats"), clink("christian-jewelry.html","Jewelry")]) +
+            '<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px 6px;flex:1;min-width:520px">' +
+              col("Clothing &amp; Accessories", [clink("christian-clothing-apparel.html","Clothing &amp; Apparel"), clink("christian-t-shirts.html","Shirts"), clink("christian-hoodies.html","Sweatshirts"), clink("christian-hats.html","Hats"), clink("mens-christian-clothing.html","Men&#39;s"), clink("womens-christian-clothing.html","Women&#39;s"), clink("christian-streetwear.html","Streetwear"), clink("christian-golf-apparel.html","Golf Wear"), clink("faith-based-clothing.html","Faith"), clink("christian-jewelry.html","Jewelry")]) +
               col("Household", [clink("christian-cups.html","Drinkware"), clink("christian-mugs.html","Mugs"), clink("christian-tumblers.html","Water Bottles")]) +
               col("Art &amp; Decor", [clink("christian-paintings.html","Art"), clink("christian-posters.html","Posters"), clink("christian-woodworking.html","Wood"), clink("christian-glasswork.html","Glass"), clink("christian-stickers.html","Stickers"), clink("christian-magnets.html","Magnets")]) +
-              col("Daily Bread", [hlink("daily-verse.html","Daily Verse"), hlink("prophetic-word.html","Daily Prophetic Word"), hlink("devotional.html","Daily Devotional"), hlink("affirmations.html","Affirmations"), hlink("warfare.html","Spiritual Warfare Prayers"), hlink("testimonies.html","Testimonies")]) +
-              col("Community", [heartlink("christian-merch.html","Merch"), heartlink("radio.html","Live Radio"), heartlink("testimonies.html","Testimonies"), heartlink("scripture-resources.html","Bible Verses"), heartlink("inspirational-graphics.html","Inspiration"), heartlink("contact.html","Contact"), heartlink("give-back.html","Give Back"), heartlink("donate.html","Donation"), heartlink("prayer.html","Prayer Request")]) +
+              col("Daily Bread", [hlink("daily-verse.html","Daily Verse"), hlink("prophetic-word.html","Daily Prophetic Word"), hlink("devotional.html","Daily Devotional"), hlink("radio.html","Daily Worship"), hlink("affirmations.html","Daily Affirmations"), hlink("warfare.html","Daily Warfare Prayers")]) +
+              col("Community", [heartlink("about.html","About Us"), heartlink("christian-merch.html","Merch"), heartlink("testimonies.html","Testimonies"), heartlink("scripture-resources.html","Social Media Posts"), heartlink("inspirational-graphics.html","Inspirational Posts"), heartlink("contact.html","Contact"), heartlink("give-back.html","Give Back"), heartlink("donate.html","Donation"), heartlink("prayer.html","Prayer Request")]) +
             "</div>" +
           "</div>" +
           '<div style="max-width:1180px;margin:34px auto 0;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;font-size:12px;color:#BBD8F5">' +
             "<span>© 2026 Love &amp; Love YAH. All rights reserved. <a class=\"plain\" href=\"https://www.crosstownseo.com/\" target=\"_blank\" rel=\"noopener\" style=\"color:#CFE3F8;text-decoration:underline\">Web Design, AEO, GEO, LLM done by CROSSTOWN SEO</a></span>" +
-            '<span style="display:flex;gap:16px"><span>Privacy</span><span>Terms</span><span>Shipping &amp; Returns</span><a class="plain" href="' + base + 'sitemap.xml" style="color:#BBD8F5;text-decoration:underline">Sitemap</a></span>' +
+            '<span style="display:flex;gap:16px"><span>Privacy</span><span>Terms</span><span>Shipping &amp; Returns</span></span>' +
           "</div>" +
         "</footer>";
     }

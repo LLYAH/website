@@ -25,7 +25,7 @@
       <div style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:18px;padding:34px;box-shadow:0 1px 3px rgba(0,0,0,.10),0 4px 11px rgba(26,25,23,.07)">
         <h2 style="font-weight:800;font-size:26px;letter-spacing:-.9px;margin:0 0 6px">Send a prayer request</h2>
         <p style="font-size:14px;line-height:1.6;color:#5a4f49;margin:0 0 22px">Fill in what you're comfortable sharing. Nothing here is required except the request itself.</p>
-        <form onsubmit="return false" style="display:grid;grid-template-columns:1fr 1fr;gap:13px">
+        <form style="display:grid;grid-template-columns:1fr 1fr;gap:13px">
           <input id="pr-name" placeholder="Your name (or leave blank)" style="padding:13px 15px;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-size:14px;background:#fff;color:#1A1917">
           <input id="pr-phone" placeholder="Phone (optional)" style="padding:13px 15px;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-size:14px;background:#fff;color:#1A1917">
           <input id="pr-email" placeholder="Email address" style="grid-column:1/-1;padding:13px 15px;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-size:14px;background:#fff;color:#1A1917">
@@ -33,7 +33,8 @@
           <textarea id="pr-msg" placeholder="Your prayer request" rows="6" style="grid-column:1/-1;padding:13px 15px;border:1px solid rgba(0,0,0,.14);border-radius:10px;font:inherit;font-size:14px;background:#fff;color:#1A1917;resize:vertical"></textarea>
           <label style="grid-column:1/-1;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#5a4f49"><input type="checkbox" style="margin-top:3px">Keep this private — prayer team only, never published.</label>
           <label style="grid-column:1/-1;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#5a4f49"><input type="checkbox" style="margin-top:3px">Check in on me weekly until I say otherwise.</label>
-          <button style="grid-column:1/-1;justify-self:start;background:#41A5EE;color:#fff;border:none;font:inherit;font-weight:700;font-size:15px;padding:14px 30px;border-radius:12px;cursor:pointer" id="pr-send">Send my request</button>
+          <button style="grid-column:1/-1;justify-self:start;background:#41A5EE;color:#fff;border:none;font:inherit;font-weight:700;font-size:15px;padding:14px 30px;border-radius:12px;cursor:pointer" type="submit" id="pr-send">Send my request</button>
+          <div id="pr-note" style="grid-column:1/-1;font-size:13px;line-height:1.5;color:#5a4f49"></div>
         </form>
       </div>
       <div style="display:flex;flex-direction:column;gap:26px">
@@ -46,34 +47,57 @@
   </div>
 </div></div>
 <site-footer base=""></site-footer>
-<script src="site-chrome.js"></script>
+<script src="site-chrome.js?v=2"></script>
 <script src="site.js"></script>
 
 <script>
 (function(){
+  // Web3Forms: create a free access key at web3forms.com for prayer@loveandloveyah.com,
+  // then paste it below. Requests then send from the site straight to that inbox.
+  var ACCESS_KEY = 'YOUR-WEB3FORMS-ACCESS-KEY';
   var btn = document.getElementById('pr-send');
   if (!btn) return;
-  btn.addEventListener('click', function(){
-    var f = btn.closest('form');
-    if (!f) return;
-    var g = function(sel){ var e = f.querySelector(sel); return e ? e.value.trim() : ''; };
+  var f = btn.closest('form');
+  if (!f) return;
+  var LABEL = btn.textContent;
+  var note = document.getElementById('pr-note');
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var g = function(sel){ var el = f.querySelector(sel); return el ? el.value.trim() : ''; };
+    if (!g('#pr-msg')) { note.style.color = '#a33'; note.textContent = 'Please share your request before sending.'; return; }
     var cats = [].filter.call(f.querySelectorAll('.pr-cat'), function(b){ return b.getAttribute('data-on') === '1'; })
                  .map(function(b){ return b.textContent; }).join(', ');
     var cb = f.querySelectorAll('input[type=checkbox]');
-    var body = [
-      'Name: ' + (g('#pr-name') || '(not given)'),
-      'Phone: ' + (g('#pr-phone') || '(not given)'),
-      'Email: ' + (g('#pr-email') || '(not given)'),
-      'Category: ' + (cats || '(none selected)'),
-      '',
-      'Prayer request:',
-      g('#pr-msg'),
-      '',
-      'Keep private: ' + (cb[0] && cb[0].checked ? 'Yes' : 'No'),
-      'Weekly check-in: ' + (cb[1] && cb[1].checked ? 'Yes' : 'No')
-    ].join('\n');
-    var subject = 'Prayer request' + (g('#pr-name') ? ' from ' + g('#pr-name') : '');
-    window.location.href = 'mailto:prayer@loveandloveyah.com?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    var payload = {
+      access_key: ACCESS_KEY,
+      subject: 'Prayer request' + (g('#pr-name') ? ' from ' + g('#pr-name') : ''),
+      from_name: 'Love and Love YAH prayer line',
+      name: g('#pr-name') || '(not given)',
+      phone: g('#pr-phone') || '(not given)',
+      email: g('#pr-email') || 'noreply@loveandloveyah.com',
+      category: cats || '(none selected)',
+      message: g('#pr-msg'),
+      keep_private: cb[0] && cb[0].checked ? 'Yes' : 'No',
+      weekly_checkin: cb[1] && cb[1].checked ? 'Yes' : 'No'
+    };
+    btn.disabled = true; btn.textContent = 'Sending\u2026';
+    note.style.color = '#5a4f49'; note.textContent = '';
+    fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json', Accept:'application/json'},
+      body: JSON.stringify(payload)
+    }).then(function(r){ return r.json(); }).then(function(d){
+      if (!d.success) throw new Error('failed');
+      f.reset();
+      [].forEach.call(f.querySelectorAll('.pr-cat'), function(b){ b.setAttribute('data-on','0'); });
+      btn.textContent = LABEL;
+      note.style.color = '#185ABD';
+      note.textContent = 'Received. Our prayer team will be praying over this, and we\u2019ll write back within a day.';
+    }).catch(function(){
+      btn.textContent = LABEL;
+      note.style.color = '#a33';
+      note.innerHTML = 'Something went wrong sending that. Please try again or email <a href="mailto:prayer@loveandloveyah.com">prayer@loveandloveyah.com</a>.';
+    }).then(function(){ btn.disabled = false; });
   });
 })();
 </script>
