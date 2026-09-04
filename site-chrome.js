@@ -30,6 +30,9 @@
     "woodworking": [["Wood Signs &amp; Decor", "wood-signs-and-decor"], ["Wood Cut &amp; Engraving Files", "wood-cut-and-engraving-files"]],
     "glasswork": [["Etched Glass Decor", "etched-glass-decor"], ["Glass Block Decor", "glass-block-decor"], ["Glass Cross Ornament", "glass-cross-ornament"], ["Glass Keepsake Box", "glass-keepsake-box"], ["Glass Ornament", "glass-ornament"], ["Glass Wall Hanging", "glass-wall-hanging"], ["Stained Glass Suncatcher", "stained-glass-suncatcher"]]
   };
+  /* categories shown in the top-level "Shop by category" rail — apparel sub-categories
+     (T-Shirts, Hoodies, Hats) live under Clothing & Apparel instead */
+  const RAIL_CATS = CATS.filter((c) => ["t-shirts", "hoodies", "hats"].indexOf(c[0]) === -1);
   /* [label, t-shirt slug, hoodie slug] */
   const THEMES = [
     ["Faith Statement", "faith-shirt", "faith-sweatshirt"],
@@ -57,16 +60,16 @@
   class SiteNav extends HTMLElement {
     connectedCallback() {
       const base = this.getAttribute("base") || "";
-      const rail = CATS.map(([slug, label], i) =>
+      const rail = RAIL_CATS.map(([slug, label], i) =>
         '<a class="catitem plain" href="' + base + "christian-" + slug + '.html" data-cat="' + slug + '"' +
         (i === 0 ? ' data-on="1"' : "") + ">" + label + "</a>"
       ).join("") +
-        '<a class="catitem plain" href="' + base + 'christian-merch.html" style="font-weight:800">All Merch</a>';
-      const mobileCats = CATS.map(([slug, label]) =>
+        '<a class="catitem plain" href="' + base + 'christian-merch.html" data-cat="clothing-apparel" style="font-weight:800">All Merch</a>';
+      const mobileCats = RAIL_CATS.map(([slug, label]) =>
         '<a class="plain" href="' + base + "christian-" + slug + '.html">' + label + "</a>"
       ).join("") +
         '<a class="plain" href="' + base + 'christian-merch.html" style="font-weight:800">All Merch</a>';
-      const mobileClothing = [["Men&#39;s Clothing","mens-christian-clothing"],["Women&#39;s Clothing","womens-christian-clothing"],["Streetwear","christian-streetwear"],["Golf Wear","christian-golf-apparel"],["T-Shirts","christian-t-shirts"],["Hoodies &amp; Sweatshirts","christian-hoodies"],["Hats &amp; Headwear","christian-hats"],["Graphic Tees","christian-t-shirts/faith-over-fear"],["Funny Tees","christian-t-shirts/love-shirt"],["Faith","faith-based-clothing"]].map(function (c) {
+      const mobileClothing = [["Men&#39;s Clothing","mens-christian-clothing"],["Women&#39;s Clothing","womens-christian-clothing"],["Streetwear","christian-streetwear"],["Golf Wear","christian-golf-apparel"],["T-Shirts","christian-t-shirts"],["Hoodies &amp; Sweatshirts","christian-hoodies"],["Hats &amp; Headwear","christian-hats"],["Embroidery","christian-embroidery"],["Faith","faith-based-clothing"]].map(function (c) {
         return '<a class="plain" href="' + base + c[1] + '.html">' + c[0] + '</a>';
       }).join("");
       this.innerHTML =
@@ -86,13 +89,10 @@
                   '<a class="tsitem plain" href="' + base + 'christian-t-shirts.html"><span class="tslbl">T-Shirts</span></a>' +
                   '<a class="tsitem plain" href="' + base + 'christian-hoodies.html"><span class="tslbl">Hoodies &amp; Sweatshirts</span></a>' +
                   '<a class="tsitem plain" href="' + base + 'christian-hats.html"><span class="tslbl">Hats &amp; Headwear</span></a>' +
-                  '<a class="tsitem plain" href="' + base + 'christian-t-shirts/faith-over-fear.html"><span class="tslbl">Graphic Tees</span></a>' +
-                  '<a class="tsitem plain" href="' + base + 'christian-t-shirts/love-shirt.html"><span class="tslbl">Funny Tees</span></a>' +
+                  '<a class="tsitem plain" href="' + base + 'christian-embroidery.html"><span class="tslbl">Embroidery</span></a>' +
                   '<a class="tsitem plain" href="' + base + 'faith-based-clothing.html"><span class="tslbl">Faith</span></a>' +
                   '<a class="tsitem plain" href="' + base + 'christian-clothing-apparel.html"><span class="tslbl" style="font-weight:700">All Clothing &amp; Apparel →</span></a>' +
                 "</div>" +
-                '<div class="megacols megasubs" data-for="tshirts" style="display:none"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">T-Shirts — shop by theme</div>' + themeItems(base, "t-shirts") + '<a class="tsitem plain" href="' + base + 'christian-t-shirts.html"><span class="tslbl" style="font-weight:700">All T-Shirts →</span></a></div>' +
-                '<div class="megacols megasubs" data-for="hoodies" style="display:none"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">Hoodies &amp; Sweatshirts — shop by theme</div>' + themeItems(base, "hoodies") + '<a class="tsitem plain" href="' + base + 'christian-hoodies.html"><span class="tslbl" style="font-weight:700">All Hoodies &amp; Sweatshirts →</span></a></div>' +
                 Object.keys(SUBS).map(function (slug) {
                   const label = (CATS.find((c) => c[0] === slug) || [slug, slug])[1];
                   return '<div class="megacols megasubs" data-for="' + slug + '" style="display:none"><div class="tscolh" style="grid-column:1/-1;margin:0 0 14px">' + label + ' — shop by type</div>' +
@@ -192,7 +192,7 @@
         const ci = e.target.closest(".catitem");
         if (!ci) return;
         const cat = ci.dataset.cat;
-        const want = (cat === "hoodies" || cat === "clothing-apparel") ? cat : (SUBS[cat] ? cat : "tshirts");
+        const want = SUBS[cat] ? cat : "clothing-apparel";
         this.querySelectorAll(".catitem").forEach((a) => a.removeAttribute("data-on"));
         ci.setAttribute("data-on", "1");
         this.querySelectorAll(".megacols").forEach((p) => {
@@ -224,13 +224,13 @@
       this.innerHTML =
         '<footer style="background:linear-gradient(135deg,#2E7AC4 0%,#17538F 28%,#0C3268 62%,#071E42 100%);color:#EDEAE4;padding:54px 34px 28px;font-family:\'Hanken Grotesk\',sans-serif">' +
           '<div style="max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start">' +
-            '<div style="max-width:350px">' +
+            '<div style="max-width:300px">' +
               '<a class="plain" href="' + base + 'index.html" style="display:flex;align-items:center;gap:10px"><span style="width:26px;height:26px;border-radius:50%;background:#41A5EE"></span><span style="font-weight:800;letter-spacing:-.4px;font-size:19px">Love &amp; Love YAH</span></a>' +
               '<p style="color:#FFFFFF;font-size:14px;line-height:1.6;margin:14px 0 18px">Love &amp; Love YAH is a Christ-centered ministry and shop. We make Holy Spirit inspired apparel and handmade goods that carries the Word into everyday life to help fulfill The Great Commission. 10% of every purchase is donated to a Christian ministry, mission, charity or non-profit. We also are grateful to provide FREE resources to help you grow closer to The Lord Jesus Christ (Yahushah Hamashiach). We give away everything we can for free, and we pray with anyone who asks &mdash; all to the Glory of God (Yahweh).</p>' +
               '<div style="display:flex;gap:10px">' + SOCIAL.map((s) => '<a href="#" style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.08);color:#EDEAE4">' + s + "</a>").join("") + "</div>" +
             "</div>" +
             '<div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px 6px;flex:1;min-width:520px">' +
-              col("Clothing &amp; Accessories", [clink("christian-clothing-apparel.html","Clothing &amp; Apparel"), clink("christian-t-shirts.html","Shirts"), clink("christian-hoodies.html","Sweatshirts"), clink("christian-hats.html","Hats"), clink("mens-christian-clothing.html","Men&#39;s"), clink("womens-christian-clothing.html","Women&#39;s"), clink("christian-streetwear.html","Streetwear"), clink("christian-golf-apparel.html","Golf Wear"), clink("faith-based-clothing.html","Faith"), clink("christian-jewelry.html","Jewelry")]) +
+              col("Clothing &amp; Accessories", [clink("christian-clothing-apparel.html","Clothing"), clink("christian-t-shirts.html","Shirts"), clink("christian-hoodies.html","Sweatshirts"), clink("christian-hats.html","Hats"), clink("christian-embroidery.html","Embroidery"), clink("mens-christian-clothing.html","Men&#39;s"), clink("womens-christian-clothing.html","Women&#39;s"), clink("christian-streetwear.html","Streetwear"), clink("christian-golf-apparel.html","Golf Wear"), clink("faith-based-clothing.html","Faith"), clink("christian-jewelry.html","Jewelry")]) +
               col("Household", [clink("christian-cups.html","Drinkware"), clink("christian-mugs.html","Mugs"), clink("christian-tumblers.html","Water Bottles")]) +
               col("Art &amp; Decor", [clink("christian-paintings.html","Art"), clink("christian-posters.html","Posters"), clink("christian-woodworking.html","Wood"), clink("christian-glasswork.html","Glass"), clink("christian-stickers.html","Stickers"), clink("christian-magnets.html","Magnets")]) +
               col("Daily Bread", [hlink("daily-verse.html","Daily Verse"), hlink("prophetic-word.html","Daily Prophetic Word"), hlink("devotional.html","Daily Devotional"), hlink("radio.html","Daily Worship"), hlink("affirmations.html","Daily Affirmations"), hlink("warfare.html","Daily Warfare Prayers")]) +

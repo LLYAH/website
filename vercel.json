@@ -3,6 +3,31 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/embroidery",
+      "destination": "/christian-embroidery",
+      "permanent": true
+    },
+    {
+      "source": "/embroidery.html",
+      "destination": "/christian-embroidery",
+      "permanent": true
+    },
+    {
+      "source": "/christian-embroidery.html",
+      "destination": "/christian-embroidery",
+      "permanent": true
+    },
+    {
+      "source": "/embroidered-christian-apparel",
+      "destination": "/christian-embroidery",
+      "permanent": true
+    },
+    {
+      "source": "/christian-embroidery-apparel",
+      "destination": "/christian-embroidery",
+      "permanent": true
+    },
+    {
       "source": "/faith-clothing",
       "destination": "/faith-based-clothing",
       "permanent": true
@@ -490,6 +515,61 @@
     {
       "source": "/stickers/decals",
       "destination": "/christian-stickers/christian-decals",
+      "permanent": true
+    },
+    {
+      "source": "/graphic-tees",
+      "destination": "/christian-t-shirts/graphic-tees",
+      "permanent": true
+    },
+    {
+      "source": "/graphic-tees.html",
+      "destination": "/christian-t-shirts/graphic-tees",
+      "permanent": true
+    },
+    {
+      "source": "/christian-graphic-tees",
+      "destination": "/christian-t-shirts/graphic-tees",
+      "permanent": true
+    },
+    {
+      "source": "/christian-graphic-tees.html",
+      "destination": "/christian-t-shirts/graphic-tees",
+      "permanent": true
+    },
+    {
+      "source": "/funny-tees",
+      "destination": "/christian-t-shirts/funny-tees",
+      "permanent": true
+    },
+    {
+      "source": "/funny-tees.html",
+      "destination": "/christian-t-shirts/funny-tees",
+      "permanent": true
+    },
+    {
+      "source": "/funny-christian-t-shirts",
+      "destination": "/christian-t-shirts/funny-tees",
+      "permanent": true
+    },
+    {
+      "source": "/funny-christian-shirts",
+      "destination": "/christian-t-shirts/funny-tees",
+      "permanent": true
+    },
+    {
+      "source": "/christian-funny-tees",
+      "destination": "/christian-t-shirts/funny-tees",
+      "permanent": true
+    },
+    {
+      "source": "/christian-t-shirts/graphic-tees.html",
+      "destination": "/christian-t-shirts/graphic-tees",
+      "permanent": true
+    },
+    {
+      "source": "/christian-t-shirts/funny-tees.html",
+      "destination": "/christian-t-shirts/funny-tees",
       "permanent": true
     },
     {

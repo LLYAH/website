@@ -50,7 +50,7 @@
       a.setAttribute("href", base + a.getAttribute("href"));
     });
   }
-  ["site-chrome.js", "cart.js"].forEach(function (src) {
+  ["site-chrome.js?v=5", "cart.js"].forEach(function (src) {
     var s = document.createElement("script");
     s.src = base + src;
     document.body.appendChild(s);
