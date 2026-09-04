@@ -20,7 +20,7 @@ Amounts are validated and priced server-side (`$1`–`$100,000`); the client onl
 1. Copy `.env.example` values into Vercel → Project → Environment Variables.
 2. Stripe Dashboard → Webhooks → add `https://YOURDOMAIN/api/webhooks/stripe`, subscribe to the three events above, paste the signing secret as `STRIPE_WEBHOOK_SECRET`.
 3. PayPal Developer → Apps & Credentials → REST app → client id/secret. Webhooks → add `https://YOURDOMAIN/api/webhooks/paypal`, subscribe to the four events, paste the webhook id as `PAYPAL_WEBHOOK_ID`. Set `PAYPAL_ENV=sandbox` while testing.
-4. Optional: `POSTGRES_URL` creates and writes the `donations` table automatically. Without it, every donation is written to the function logs instead.
+4. Optional: `POSTGRES_URL` (from the Supabase Marketplace integration — `vercel integration add supabase`) creates and writes the `orders`/`donations` tables automatically. Without it, every order/donation is written to the function logs instead.
 5. Optional: `RESEND_API_KEY` + `RECEIPT_FROM` send donor receipts; `DONATION_NOTIFY_TO` copies your team.
 
 ## Notes

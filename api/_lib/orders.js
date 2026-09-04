@@ -1,16 +1,14 @@
-// Order ledger + confirmation email. Mirrors donations.js: Postgres when
-// POSTGRES_URL is set, function logs otherwise. Idempotent on gateway_ref.
+// Order ledger + confirmation email. Mirrors donations.js: Postgres (Supabase)
+// when POSTGRES_URL is set, function logs otherwise. Idempotent on gateway_ref.
 
 import { money } from "./util.js";
+import postgres from "postgres";
 
-let sqlPromise = null;
+let sql = null;
 function getSql() {
   if (!process.env.POSTGRES_URL) return null;
-  if (!sqlPromise) {
-    sqlPromise = import("@vercel/postgres").then((m) => m.sql)
-      .catch((e) => { console.error("[orders] @vercel/postgres unavailable:", e.message); return null; });
-  }
-  return sqlPromise;
+  if (!sql) sql = postgres(process.env.POSTGRES_URL, { ssl: "require", prepare: false });
+  return sql;
 }
 
 async function ensureTable(sql) {

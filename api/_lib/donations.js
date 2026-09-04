@@ -1,18 +1,15 @@
 // Donation ledger + receipt email.
-// Postgres is optional: with no POSTGRES_URL the record is written to the
-// function log so nothing is silently lost while the DB is being set up.
+// Postgres (Supabase) is optional: with no POSTGRES_URL the record is written
+// to the function log so nothing is silently lost while the DB is being set up.
 
 import { money } from "./util.js";
+import postgres from "postgres";
 
-let sqlPromise = null;
+let sql = null;
 function getSql() {
   if (!process.env.POSTGRES_URL) return null;
-  if (!sqlPromise) {
-    sqlPromise = import("@vercel/postgres")
-      .then((m) => m.sql)
-      .catch((e) => { console.error("[donations] @vercel/postgres unavailable:", e.message); return null; });
-  }
-  return sqlPromise;
+  if (!sql) sql = postgres(process.env.POSTGRES_URL, { ssl: "require", prepare: false });
+  return sql;
 }
 
 async function ensureTable(sql) {

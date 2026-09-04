@@ -23,7 +23,7 @@ site.css site.js site-chrome.js   Shared styles, interactions, nav/footer inject
 uploads/                   Verse graphics used by the site
 api/                       Vercel serverless functions (Stripe + PayPal, see api/README.md)
 vercel.json                cleanUrls: true, trailingSlash: false
-package.json               stripe, @vercel/postgres
+package.json               stripe, postgres (Supabase)
 .env.example               Required environment variables
 design_handoff_backend_integration/README.md   Backend spec for cart/checkout/payments/db
 ```
